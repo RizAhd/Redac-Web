@@ -1,0 +1,13 @@
+# Confidential client documents
+REDAC Website n Hosting n SEO*.pdf
+*Proposal*.pdf
+
+# Local tool and build output
+.impeccable/
+.taste-skill/
+demo/shots/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
