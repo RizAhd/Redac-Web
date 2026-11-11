@@ -112,3 +112,33 @@ export function revealIn(scope) {
     });
   });
 }
+
+/**
+ * Card rows that scroll sideways on phones and tablets (.stk, .fan, .sgrid, .aud, .posts)
+ * glide to the next card on their own every few seconds and loop back at the end.
+ * They pause while touched and only run while visible. Returns a cleanup function.
+ */
+export function autoRows(root = document) {
+  const rows = [...root.querySelectorAll('.stk, .fan, .sgrid, .aud, .posts')];
+  const stops = [];
+  rows.forEach((row) => {
+    let held = 0;
+    let visible = false;
+    const hold = () => { held = Date.now(); };
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.4 });
+    io.observe(row);
+    row.addEventListener('pointerdown', hold, { passive: true });
+    row.addEventListener('touchstart', hold, { passive: true });
+    row.addEventListener('wheel', hold, { passive: true });
+    const tick = setInterval(() => {
+      if (!visible || Date.now() - held < 6000 || row.scrollWidth <= row.clientWidth + 4) return;
+      const card = row.firstElementChild;
+      if (!card) return;
+      const step = card.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 12);
+      const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 8;
+      row.scrollTo({ left: atEnd ? 0 : row.scrollLeft + step, behavior: 'smooth' });
+    }, 3200);
+    stops.push(() => { clearInterval(tick); io.disconnect(); row.removeEventListener('pointerdown', hold); row.removeEventListener('touchstart', hold); row.removeEventListener('wheel', hold); });
+  });
+  return () => stops.forEach((s) => s());
+}

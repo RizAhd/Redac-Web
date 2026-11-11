@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { startLenis, scrollToTop, ScrollTrigger } from './lib/motion.js';
+import { startLenis, scrollToTop, ScrollTrigger, autoRows } from './lib/motion.js';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
@@ -31,7 +31,9 @@ function RouteEffects() {
     document.title = `${name.charAt(0).toUpperCase() + name.slice(1)} | REDAC & Associates`;
     // let new sections measure themselves before triggers refresh
     const t = setTimeout(() => ScrollTrigger.refresh(), 120);
-    return () => clearTimeout(t);
+    let stopRows = () => {};
+    const r = setTimeout(() => { stopRows = autoRows(); }, 600);
+    return () => { clearTimeout(t); clearTimeout(r); stopRows(); };
   }, [pathname, hash]);
   return null;
 }

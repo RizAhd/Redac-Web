@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { C, PROCESS, AUDIENCES, POSTS, FAQ, SERVICES } from '../lib/data.js';
+import { C, PROCESS, AUDIENCES, POSTS, SERVICES } from '../lib/data.js';
 import { gsap, ScrollTrigger, SplitText, useGSAP, revealIn, reduced, isDesktop } from '../lib/motion.js';
 import { Btn, Icon, Photo, Eyebrow } from '../components/ui.jsx';
-import { ServiceStack, FaqList, CtaBand, Ticker, StatusCard } from '../components/blocks.jsx';
+import { ServiceStack, CtaBand, Ticker, StatusCard } from '../components/blocks.jsx';
 
 export default function Home() {
   const ref = useRef(null);
@@ -41,27 +41,6 @@ export default function Home() {
     gsap.from('.bento__svc li', { x: -40, autoAlpha: 0, duration: 0.9, ease: 'expo.out', stagger: 0.06, scrollTrigger: { trigger: '.bento', start: 'top 70%', once: true } });
     gsap.from('.bento__groups li', { x: -30, autoAlpha: 0, duration: 0.9, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: '.bento', start: 'top 60%', once: true } });
 
-    /* 5. process: pinned, photo and step change together (OneFin) */
-    if (desk) {
-      const steps = gsap.utils.toArray('.proc__step');
-      const pics = gsap.utils.toArray('.proc__pic');
-      gsap.set(pics.slice(1), { clipPath: 'inset(100% 0% 0% 0% round 36px)' });
-      const ptl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.proc', start: 'top top', end: '+=260%', pin: true, scrub: 0.6,
-          onUpdate: (st) => {
-            const idx = Math.min(steps.length - 1, Math.floor(st.progress * steps.length * 0.999));
-            steps.forEach((s, i) => s.classList.toggle('is-on', i === idx));
-          },
-        },
-      });
-      ptl.to('.proc__bar i', { scaleX: 1, ease: 'none', duration: pics.length - 1 }, 0);
-      pics.slice(1).forEach((p, i) => {
-        ptl.to(p, { clipPath: 'inset(0% 0% 0% 0% round 36px)', duration: 0.6, ease: 'power2.inOut' }, i + 0.4);
-        ptl.from(p.querySelector('img'), { scale: 1.25, duration: 0.8, ease: 'power2.out' }, i + 0.4);
-      });
-    }
-
     /* 6. who we help: giant type slides, cards fan out (Quadro) */
     gsap.fromTo('.who__ghost', { xPercent: 10 }, { xPercent: -30, ease: 'none', scrollTrigger: { trigger: '.who', start: 'top bottom', end: 'bottom top', scrub: true } });
     if (desk) {
@@ -74,15 +53,9 @@ export default function Home() {
       });
     }
 
-    /* 7. promise: rows of giant words slide against each other */
-    gsap.utils.toArray('.bw__row').forEach((row, i) => {
-      gsap.fromTo(row, { xPercent: i % 2 ? -30 : 0 }, { xPercent: i % 2 ? 0 : -30, ease: 'none', scrollTrigger: { trigger: '.bw', start: 'top bottom', end: 'bottom top', scrub: true } });
-    });
-
     ScrollTrigger.refresh();
   }, { scope: ref });
 
-  const words = ['Clarity', 'Compliance', 'Confidence'];
   const [p0, ...rest] = POSTS;
 
   return (
@@ -174,38 +147,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. PROCESS */}
-      <section className="proc">
-        <div className="wrap proc__grid">
-          <div className="proc__visual">
-            {PROCESS.map((p, i) => (
-              <div className="proc__pic" key={p.title} style={{ zIndex: i }}>
-                <Photo k={['step-book', 'step-talk', 'step-prepare', 'step-approve'][i]} alt="" />
-                <div className="proc__badge"><span><Icon name={p.icon} size={18} /></span>{p.title}</div>
-              </div>
-            ))}
-          </div>
-          <div className="proc__text">
-            <Eyebrow n="03">How it works</Eyebrow>
-            <h2 className="h2">Four steps, <span className="accent">no surprises</span></h2>
-            <ol className="proc__steps">
-              {PROCESS.map((p, i) => (
-                <li className={`proc__step${i === 0 ? ' is-on' : ''}`} key={p.title}>
-                  <span className="proc__no">{String(i + 1).padStart(2, '0')}</span>
-                  <div><h3>{p.title}</h3><p>{p.text}</p></div>
-                </li>
-              ))}
-            </ol>
-            <div className="proc__bar" aria-hidden="true"><i /></div>
-          </div>
-        </div>
-      </section>
-
       {/* 6. WHO WE HELP */}
       <section className="who sec">
         <p className="who__ghost" aria-hidden="true">Who we help &middot; Who we help</p>
         <div className="wrap">
-          <div className="head-center"><Eyebrow n="04">Who we help</Eyebrow><h2 className="h2" data-split>Built for every <span className="accent">stage</span></h2></div>
+          <div className="head-center"><Eyebrow n="03">Who we help</Eyebrow><h2 className="h2" data-split>Built for every <span className="accent">stage</span></h2></div>
           <div className="fan">
             {AUDIENCES.map((a, i) => (
               <article className={`fcard fcard--${i}`} key={a.slug}>
@@ -222,20 +168,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. PROMISE */}
-      <section className="bw" aria-label="Clarity, compliance, confidence">
-        {[0, 1, 2].map((r) => (
-          <div className={`bw__row bw__row--${r}`} key={r} aria-hidden="true">
-            {[...words, ...words, ...words].map((w, i) => <span key={i}>{w}<i>&bull;</i></span>)}
-          </div>
-        ))}
-      </section>
-
       {/* 8. INSIGHTS */}
       <section className="sec">
         <div className="wrap">
           <div className="head-split">
-            <div><Eyebrow n="05">News and insights</Eyebrow><h2 className="h2" data-split>Useful <span className="accent">reading</span></h2></div>
+            <div><Eyebrow n="04">News and insights</Eyebrow><h2 className="h2" data-split>Useful <span className="accent">reading</span></h2></div>
             <Link className="link link--big" to="/insights" data-reveal>All articles <Icon name="arrow" size={16} /></Link>
           </div>
           <div className="feat">
@@ -252,21 +189,6 @@ export default function Home() {
               ))}
               <Link className="feat__more" to="/insights"><b>New articles every month</b><span>Tax dates, bookkeeping tips and business set-up, in plain English.</span><Icon name="arrow" size={20} /></Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. FAQ */}
-      <section className="sec sec--tight">
-        <div className="wrap">
-          <div className="faqp">
-            <div className="faqp__head">
-              <h2 className="h2" data-split>Questions before you <span className="accent accent--light">book</span></h2>
-              <p className="faqp__sub">Short answers to what new clients ask us most.</p>
-              <div className="faqp__photo" data-img><Photo k="faq" alt="" /></div>
-              <Btn to="/faq" variant="glass" arrow={false}>All questions</Btn>
-            </div>
-            <FaqList items={FAQ.slice(0, 5)} dark />
           </div>
         </div>
       </section>
