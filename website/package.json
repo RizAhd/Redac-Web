@@ -1,4 +1,15 @@
 {
+  "name": "redac-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Website for REDAC & Associates",
+  "author": "Riflan Mohamed",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.1",
