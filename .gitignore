@@ -1,4 +1,6 @@
-# Confidential client documents
+# Client documents: never committed
+docs/
+*.pdf
 REDAC Website n Hosting n SEO*.pdf
 *Proposal*.pdf
 
