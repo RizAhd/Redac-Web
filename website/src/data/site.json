@@ -1,6 +1,5 @@
 {
   "_readme": "All client data for the website lives here. Edit this file when REDAC sends their details, then run: python build.py. A value of null shows a 'to be confirmed' marker on the site.",
-
   "company": {
     "name": "REDAC & Associates",
     "short": "REDAC",
@@ -10,7 +9,6 @@
     "registrations": null,
     "domain": null
   },
-
   "contact": {
     "phone": null,
     "email": null,
@@ -22,124 +20,218 @@
       "linkedin": null
     }
   },
-
   "integrations": {
     "_note": "enquiry_form_action: the form service URL (e.g. a WordPress form endpoint). calendly_url: the client's Calendly link. Leave null for the demo flow.",
     "enquiry_form_action": null,
     "calendly_url": null
   },
-
   "images": {
-    "_note": "Photo files live in static/img. Replace any file name with the client's own photo when supplied. Credits for the current stand-in photos are in content/photo-credits.json.",
+    "_note": "Photo files live in public/img. Replace any file name with the client's own photo when supplied. Credits for the current stand-in photos are in src/data/photo-credits.json.",
     "hero": "consultation-handshake.webp",
-    "cta": "handshake-desk.webp",
-    "faq": "laptop-help.webp",
-    "about": "open-office.webp",
+    "cta": "business-strategy-talk.webp",
+    "faq": "businesswoman-laptop.webp",
+    "about": "business-colleagues.webp",
     "contact": "office-building.webp",
     "pill-1": "adviser-desk.webp",
-    "pill-2": "laptop-desk.webp",
+    "pill-2": "hands-laptop-typing.webp",
     "pill-3": "signed-contract.webp",
-    "svc-individual-tax-returns": "adviser-desk.webp",
-    "svc-business-tax-and-financial-reports": "team-meeting.webp",
-    "svc-gst-and-bas": "office-desk.webp",
-    "svc-bookkeeping-and-payroll": "laptop-desk.webp",
-    "svc-business-advisory-and-project-finance": "office-team.webp",
-    "svc-company-registration-and-asic": "signed-contract.webp",
+    "svc-individual-tax-returns": "desk-calculator-laptop.webp",
+    "svc-business-tax-and-financial-reports": "financial-plan-notes.webp",
+    "svc-gst-and-bas": "finance-tablet-coffee.webp",
+    "svc-bookkeeping-and-payroll": "paperwork-laptop.webp",
+    "svc-business-advisory-and-project-finance": "meeting-notes-tablet.webp",
+    "svc-company-registration-and-asic": "signing-paperwork.webp",
     "svc-corporate-administration": "signing-documents.webp",
-    "svc-tax-compliance": "open-office.webp",
+    "svc-tax-compliance": "man-laptop-office.webp",
     "who-individuals": "professional-portrait.webp",
     "who-small-businesses": "small-business-owner.webp",
-    "who-companies": "signing-documents.webp",
-    "step-book": "laptop-help.webp",
-    "step-talk": "consultation-handshake.webp",
-    "step-prepare": "office-desk.webp",
+    "who-companies": "business-colleagues.webp",
+    "step-book": "businessman-phone.webp",
+    "step-talk": "adviser-client-meeting.webp",
+    "step-prepare": "office-desk-worker.webp",
     "step-approve": "handshake-desk.webp",
-    "post-prepare-for-your-first-tax-consultation": "adviser-desk.webp",
-    "post-bookkeeping-habits-for-tax-time": "laptop-desk.webp",
+    "post-prepare-for-your-first-tax-consultation": "adviser-client-meeting.webp",
+    "post-bookkeeping-habits-for-tax-time": "paperwork-laptop.webp",
     "post-sole-trader-or-company": "signed-contract.webp"
   },
-
   "about": {
     "intro": "REDAC & Associates is a tax and accounting firm for individuals, small businesses and companies. We prepare returns, statements and filings, keep books and payroll current, and help with company set-up and advice, all under one roof.",
     "story": null,
     "values": [
-      { "title": "One firm", "text": "Tax, books, payroll, advisory and company filings handled together, so nothing falls between providers." },
-      { "title": "You approve", "text": "We prepare the work and you review it. Nothing is lodged or filed until you have agreed." },
-      { "title": "Plain answers", "text": "Clear explanations of what we are doing, what we need from you and when it is due." }
+      {
+        "title": "One firm",
+        "text": "Tax, books, payroll, advisory and company filings handled together, so nothing falls between providers."
+      },
+      {
+        "title": "You approve",
+        "text": "We prepare the work and you review it. Nothing is lodged or filed until you have agreed."
+      },
+      {
+        "title": "Plain answers",
+        "text": "Clear explanations of what we are doing, what we need from you and when it is due."
+      }
     ]
   },
-
   "team": [
-    { "name": null, "role": null, "qualifications": null, "bio": null, "photo": null },
-    { "name": null, "role": null, "qualifications": null, "bio": null, "photo": null },
-    { "name": null, "role": null, "qualifications": null, "bio": null, "photo": null },
-    { "name": null, "role": null, "qualifications": null, "bio": null, "photo": null }
+    {
+      "name": null,
+      "role": null,
+      "qualifications": null,
+      "bio": null,
+      "photo": null
+    },
+    {
+      "name": null,
+      "role": null,
+      "qualifications": null,
+      "bio": null,
+      "photo": null
+    },
+    {
+      "name": null,
+      "role": null,
+      "qualifications": null,
+      "bio": null,
+      "photo": null
+    },
+    {
+      "name": null,
+      "role": null,
+      "qualifications": null,
+      "bio": null,
+      "photo": null
+    }
   ],
-
   "audiences": [
     {
       "slug": "individuals",
       "title": "Individuals",
       "headline": "Your tax return, done properly",
       "text": "Individual tax returns and tax compliance for people who want their return prepared, checked and lodged correctly.",
-      "services": ["individual-tax-returns", "tax-compliance"]
+      "services": [
+        "individual-tax-returns",
+        "tax-compliance"
+      ]
     },
     {
       "slug": "small-businesses",
       "title": "Small businesses",
       "headline": "Books in order, staff paid",
       "text": "GST and BAS, bookkeeping and payroll, plus business tax and year-end reports, so you can focus on running the business.",
-      "services": ["gst-and-bas", "bookkeeping-and-payroll", "business-tax-and-financial-reports"]
+      "services": [
+        "gst-and-bas",
+        "bookkeeping-and-payroll",
+        "business-tax-and-financial-reports"
+      ]
     },
     {
       "slug": "companies",
       "title": "Companies and start-ups",
       "headline": "Registered, filed, ready to grow",
       "text": "Company registration, ASIC filings, corporate administration and business advisory for companies at every stage.",
-      "services": ["company-registration-and-asic", "corporate-administration", "business-advisory-and-project-finance"]
+      "services": [
+        "company-registration-and-asic",
+        "corporate-administration",
+        "business-advisory-and-project-finance"
+      ]
     }
   ],
-
   "services": [
     {
       "slug": "individual-tax-returns",
       "title": "Individual tax returns",
-      "icon": "person",
+      "icon": "receipt",
       "short": "Your return prepared, checked and lodged.",
       "intro": "We prepare your individual tax return from your income and records, check it with you, and lodge it once you approve.",
-      "includes": ["Review of your income, deductions and records", "Preparation of your annual tax return", "A walk-through of the return before lodgement", "Lodgement once you have approved it", "Help with questions from the tax office about your return"],
-      "for": ["Employees and salary earners", "People with investment or rental income", "Anyone who wants their return checked and done right"],
-      "tags": ["Returns", "Deductions", "Lodgement"]
+      "includes": [
+        "Review of your income, deductions and records",
+        "Preparation of your annual tax return",
+        "A walk-through of the return before lodgement",
+        "Lodgement once you have approved it",
+        "Help with questions from the tax office about your return"
+      ],
+      "for": [
+        "Employees and salary earners",
+        "People with investment or rental income",
+        "Anyone who wants their return checked and done right"
+      ],
+      "tags": [
+        "Returns",
+        "Deductions",
+        "Lodgement"
+      ]
     },
     {
       "slug": "business-tax-and-financial-reports",
       "title": "Business tax and financial reports",
-      "icon": "chart",
+      "icon": "report",
       "short": "Annual business tax and year-end reports.",
       "intro": "We prepare your business tax return and the year-end financial reports that go with it, so your numbers and your obligations line up.",
-      "includes": ["Year-end financial statements", "Business income tax return preparation", "Review of records before lodgement", "Explanation of the results and what they mean for you", "Lodgement once you approve"],
-      "for": ["Sole traders and partnerships", "Companies and trusts", "Businesses that need reliable year-end figures"],
-      "tags": ["Tax", "Reports", "Year-end"]
+      "includes": [
+        "Year-end financial statements",
+        "Business income tax return preparation",
+        "Review of records before lodgement",
+        "Explanation of the results and what they mean for you",
+        "Lodgement once you approve"
+      ],
+      "for": [
+        "Sole traders and partnerships",
+        "Companies and trusts",
+        "Businesses that need reliable year-end figures"
+      ],
+      "tags": [
+        "Tax",
+        "Reports",
+        "Year-end"
+      ]
     },
     {
       "slug": "gst-and-bas",
       "title": "GST and BAS services",
-      "icon": "doc",
+      "icon": "calculator",
       "short": "Activity statements prepared and lodged on time.",
       "intro": "We prepare and lodge your business activity statements and look after GST, so each period is reconciled and on time.",
-      "includes": ["GST registration advice", "Preparation of business activity statements", "Reconciliation against your records", "Lodgement before the due date", "Reminders for upcoming periods"],
-      "for": ["GST-registered businesses", "Businesses lodging activity statements", "Owners who want deadlines off their desk"],
-      "tags": ["GST", "BAS", "Deadlines"]
+      "includes": [
+        "GST registration advice",
+        "Preparation of business activity statements",
+        "Reconciliation against your records",
+        "Lodgement before the due date",
+        "Reminders for upcoming periods"
+      ],
+      "for": [
+        "GST-registered businesses",
+        "Businesses lodging activity statements",
+        "Owners who want deadlines off their desk"
+      ],
+      "tags": [
+        "GST",
+        "BAS",
+        "Deadlines"
+      ]
     },
     {
       "slug": "bookkeeping-and-payroll",
       "title": "Bookkeeping and payroll",
-      "icon": "ledger",
+      "icon": "book",
       "short": "Records kept current and staff paid correctly.",
       "intro": "We keep your books up to date and run payroll, so your records are ready for tax time and your staff are paid correctly.",
-      "includes": ["Recording and categorising transactions", "Bank and account reconciliations", "Pay runs and payslips", "Payroll records and reporting", "Regular summaries of where the business stands"],
-      "for": ["Small businesses without an in-house bookkeeper", "Employers running regular pay runs", "Businesses catching up on records"],
-      "tags": ["Ledgers", "Reconciliation", "Pay runs"]
+      "includes": [
+        "Recording and categorising transactions",
+        "Bank and account reconciliations",
+        "Pay runs and payslips",
+        "Payroll records and reporting",
+        "Regular summaries of where the business stands"
+      ],
+      "for": [
+        "Small businesses without an in-house bookkeeper",
+        "Employers running regular pay runs",
+        "Businesses catching up on records"
+      ],
+      "tags": [
+        "Ledgers",
+        "Reconciliation",
+        "Pay runs"
+      ]
     },
     {
       "slug": "business-advisory-and-project-finance",
@@ -147,9 +239,23 @@
       "icon": "trend",
       "short": "Plans and numbers for your next step.",
       "intro": "We help you plan with numbers: budgets, forecasts and the financial side of new projects, so decisions rest on clear figures.",
-      "includes": ["Budgets and cash-flow forecasts", "Financial input for new projects", "Structuring advice for growth", "Preparation of figures for lenders or partners", "Regular reviews against your plan"],
-      "for": ["Businesses planning growth", "Owners preparing for a new project", "Anyone who wants decisions backed by figures"],
-      "tags": ["Advisory", "Forecasts", "Finance"]
+      "includes": [
+        "Budgets and cash-flow forecasts",
+        "Financial input for new projects",
+        "Structuring advice for growth",
+        "Preparation of figures for lenders or partners",
+        "Regular reviews against your plan"
+      ],
+      "for": [
+        "Businesses planning growth",
+        "Owners preparing for a new project",
+        "Anyone who wants decisions backed by figures"
+      ],
+      "tags": [
+        "Advisory",
+        "Forecasts",
+        "Finance"
+      ]
     },
     {
       "slug": "company-registration-and-asic",
@@ -157,19 +263,47 @@
       "icon": "building",
       "short": "Set up your company and keep it filed.",
       "intro": "We register new companies and handle the ongoing ASIC obligations that follow, so your company is set up and stays compliant.",
-      "includes": ["Advice on the right structure before you register", "Company registration", "ASIC filings and annual review", "Updates to company details", "Ongoing reminders for company obligations"],
-      "for": ["Founders starting a company", "Sole traders moving to a company", "Companies that need their filings kept current"],
-      "tags": ["Registration", "ASIC", "Compliance"]
+      "includes": [
+        "Advice on the right structure before you register",
+        "Company registration",
+        "ASIC filings and annual review",
+        "Updates to company details",
+        "Ongoing reminders for company obligations"
+      ],
+      "for": [
+        "Founders starting a company",
+        "Sole traders moving to a company",
+        "Companies that need their filings kept current"
+      ],
+      "tags": [
+        "Registration",
+        "ASIC",
+        "Compliance"
+      ]
     },
     {
       "slug": "corporate-administration",
       "title": "Corporate administration",
-      "icon": "check",
+      "icon": "stamp",
       "short": "Registers, resolutions and company records.",
       "intro": "We look after the administrative side of running a company: registers, resolutions, minutes and records kept in order.",
-      "includes": ["Company registers kept up to date", "Resolutions and minutes", "Changes to officeholders and shareholders", "Record keeping for company documents", "Support for annual company tasks"],
-      "for": ["Companies without a company secretary", "Directors who want records handled", "Growing companies with changing ownership"],
-      "tags": ["Registers", "Resolutions", "Records"]
+      "includes": [
+        "Company registers kept up to date",
+        "Resolutions and minutes",
+        "Changes to officeholders and shareholders",
+        "Record keeping for company documents",
+        "Support for annual company tasks"
+      ],
+      "for": [
+        "Companies without a company secretary",
+        "Directors who want records handled",
+        "Growing companies with changing ownership"
+      ],
+      "tags": [
+        "Registers",
+        "Resolutions",
+        "Records"
+      ]
     },
     {
       "slug": "tax-compliance",
@@ -177,35 +311,94 @@
       "icon": "shield",
       "short": "Meet every tax obligation, with no surprises.",
       "intro": "We help you understand and meet your tax obligations, keep track of what is due, and respond to tax office requests.",
-      "includes": ["Review of your current tax obligations", "A schedule of what is due and when", "Help catching up on overdue lodgements", "Responses to tax office correspondence", "Ongoing compliance checks"],
-      "for": ["Individuals and businesses behind on lodgements", "Anyone unsure what they need to lodge", "Businesses that want obligations tracked"],
-      "tags": ["Compliance", "Lodgements", "Deadlines"]
+      "includes": [
+        "Review of your current tax obligations",
+        "A schedule of what is due and when",
+        "Help catching up on overdue lodgements",
+        "Responses to tax office correspondence",
+        "Ongoing compliance checks"
+      ],
+      "for": [
+        "Individuals and businesses behind on lodgements",
+        "Anyone unsure what they need to lodge",
+        "Businesses that want obligations tracked"
+      ],
+      "tags": [
+        "Compliance",
+        "Lodgements",
+        "Deadlines"
+      ]
     }
   ],
-
   "process": [
-    { "title": "Book a consultation", "text": "Choose a service and send your enquiry or pick a time online.", "icon": "calendar" },
-    { "title": "Tell us what you need", "text": "We go through your situation and tell you which documents we need.", "icon": "chat" },
-    { "title": "We prepare the work", "text": "Returns, statements, books or filings, prepared by us.", "icon": "doc" },
-    { "title": "You approve it", "text": "We walk you through it. Nothing is lodged until you agree.", "icon": "check" }
+    {
+      "title": "Book a consultation",
+      "text": "Choose a service and send your enquiry or pick a time online.",
+      "icon": "calendar"
+    },
+    {
+      "title": "Tell us what you need",
+      "text": "We go through your situation and tell you which documents we need.",
+      "icon": "chat"
+    },
+    {
+      "title": "We prepare the work",
+      "text": "Returns, statements, books or filings, prepared by us.",
+      "icon": "doc"
+    },
+    {
+      "title": "You approve it",
+      "text": "We walk you through it. Nothing is lodged until you agree.",
+      "icon": "check"
+    }
   ],
-
   "stats": [
-    { "value": "08", "label": "Services under one roof", "note": "From tax returns to ASIC filings" },
-    { "value": "03", "label": "Client groups we serve", "note": "Individuals, small businesses and companies" },
-    { "value": "01", "label": "Firm for your tax and accounts", "note": "No juggling separate providers" }
+    {
+      "value": "08",
+      "label": "Services under one roof",
+      "note": "From tax returns to ASIC filings"
+    },
+    {
+      "value": "03",
+      "label": "Client groups we serve",
+      "note": "Individuals, small businesses and companies"
+    },
+    {
+      "value": "01",
+      "label": "Firm for your tax and accounts",
+      "note": "No juggling separate providers"
+    }
   ],
-
   "faq": [
-    { "q": "How do I book a consultation?", "a": "Use the Book a Consultation page to pick a time, or send the enquiry form on the Contact page. We reply to confirm." },
-    { "q": "Do you work with individuals as well as businesses?", "a": "Yes. We prepare individual tax returns and also handle business tax, GST and BAS, bookkeeping, payroll and company services." },
-    { "q": "Can you register my company?", "a": "Yes. Company registration and ASIC services are part of what we do, with corporate administration afterwards." },
-    { "q": "I am not sure which service I need.", "a": "Choose the closest one and describe your situation in the message. We will point you to the right service." },
-    { "q": "What do I need to send first?", "a": "Only your enquiry. Once we know the service, we tell you exactly which documents we need." },
-    { "q": "Is anything lodged without my approval?", "a": "No. We prepare the work and walk you through it. Nothing is lodged or filed until you have agreed." },
-    { "q": "Can you help if I am behind on lodgements?", "a": "Yes. Our tax compliance service covers catching up on overdue lodgements and responding to tax office correspondence." }
+    {
+      "q": "How do I book a consultation?",
+      "a": "Use the Book a Consultation page to pick a time, or send the enquiry form on the Contact page. We reply to confirm."
+    },
+    {
+      "q": "Do you work with individuals as well as businesses?",
+      "a": "Yes. We prepare individual tax returns and also handle business tax, GST and BAS, bookkeeping, payroll and company services."
+    },
+    {
+      "q": "Can you register my company?",
+      "a": "Yes. Company registration and ASIC services are part of what we do, with corporate administration afterwards."
+    },
+    {
+      "q": "I am not sure which service I need.",
+      "a": "Choose the closest one and describe your situation in the message. We will point you to the right service."
+    },
+    {
+      "q": "What do I need to send first?",
+      "a": "Only your enquiry. Once we know the service, we tell you exactly which documents we need."
+    },
+    {
+      "q": "Is anything lodged without my approval?",
+      "a": "No. We prepare the work and walk you through it. Nothing is lodged or filed until you have agreed."
+    },
+    {
+      "q": "Can you help if I am behind on lodgements?",
+      "a": "Yes. Our tax compliance service covers catching up on overdue lodgements and responding to tax office correspondence."
+    }
   ],
-
   "posts": [
     {
       "slug": "prepare-for-your-first-tax-consultation",

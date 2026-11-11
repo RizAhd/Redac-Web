@@ -32,44 +32,12 @@
   "source": "https://commons.wikimedia.org/w/index.php?curid=64429216"
  },
  {
-  "file": "office-desk.webp",
-  "title": "Office Desk",
-  "creator": "Eryk (Wiki Ed)",
-  "license": "by-sa",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=36594084"
- },
- {
-  "file": "open-office.webp",
-  "title": "Office desks",
-  "creator": "Linktech Australia",
-  "license": "by-sa",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=82443651"
- },
- {
-  "file": "laptop-desk.webp",
-  "title": "Besuch bei ChargeX in Dresden (40907792360)",
-  "creator": "Jakob Härter",
-  "license": "by-sa",
-  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=109890094"
- },
- {
   "file": "office-building.webp",
   "title": "Besuch bei ChargeX in Dresden (42669010692)",
   "creator": "Jakob Härter",
   "license": "by-sa",
   "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
   "source": "https://commons.wikimedia.org/w/index.php?curid=109889681"
- },
- {
-  "file": "team-meeting.webp",
-  "title": "Build3 startup studio team with Rubys, Oneboard and NomadGao",
-  "creator": "Desiapollo",
-  "license": "by",
-  "license_url": "https://creativecommons.org/licenses/by/4.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=165291825"
  },
  {
   "file": "adviser-desk.webp",
@@ -96,19 +64,115 @@
   "source": "https://commons.wikimedia.org/w/index.php?curid=148421761"
  },
  {
-  "file": "office-team.webp",
-  "title": "Wikimedia UK office meeting",
-  "creator": "Jwslubbock",
-  "license": "by-sa",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=52306655"
+  "file": "man-laptop-office.webp",
+  "title": "File:Man at a laptop in an office (Unsplash).jpg",
+  "creator": "Bench Accounting",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Man_at_a_laptop_in_an_office_(Unsplash).jpg"
  },
  {
-  "file": "laptop-help.webp",
-  "title": "Ananya was showing a new user that how to create an account in Wikipedia.Prakiti Tirtha (New Town Eco Park butterfly garden),Kolkata WLB DSC00056",
-  "creator": "Sandipoutsider",
-  "license": "by-sa",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-  "source": "https://commons.wikimedia.org/w/index.php?curid=48719607"
+  "file": "desk-calculator-laptop.webp",
+  "title": "File:Desktop with laptop and calculator (Unsplash).jpg",
+  "creator": "Unknown (via Unsplash)",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Desktop_with_laptop_and_calculator_(Unsplash).jpg"
+ },
+ {
+  "file": "meeting-notes-tablet.webp",
+  "title": "File:Two people meeting with iphone and ipad (Unsplash).jpg",
+  "creator": "Alejandro Escamilla",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Two_people_meeting_with_iphone_and_ipad_(Unsplash).jpg"
+ },
+ {
+  "file": "adviser-client-meeting.webp",
+  "title": "File:Rawpixel.com 2017-06-02 (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Rawpixel.com_2017-06-02_(Unsplash).jpg"
+ },
+ {
+  "file": "business-strategy-talk.webp",
+  "title": "File:Discussing business strategy (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Discussing_business_strategy_(Unsplash).jpg"
+ },
+ {
+  "file": "businesswoman-laptop.webp",
+  "title": "File:Businesswoman working at table (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Businesswoman_working_at_table_(Unsplash).jpg"
+ },
+ {
+  "file": "hands-laptop-typing.webp",
+  "title": "File:Rawpixel.com 2017-05-24 (Unsplash gbHMZCFraAI).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Rawpixel.com_2017-05-24_(Unsplash_gbHMZCFraAI).jpg"
+ },
+ {
+  "file": "finance-tablet-coffee.webp",
+  "title": "File:Finance analytics over coffee (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Finance_analytics_over_coffee_(Unsplash).jpg"
+ },
+ {
+  "file": "financial-plan-notes.webp",
+  "title": "File:Marketing plan (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Marketing_plan_(Unsplash).jpg"
+ },
+ {
+  "file": "businessman-phone.webp",
+  "title": "File:Smiling businessman on a phone (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Smiling_businessman_on_a_phone_(Unsplash).jpg"
+ },
+ {
+  "file": "business-colleagues.webp",
+  "title": "File:Smiling businesspeople (Unsplash).jpg",
+  "creator": "rawpixel.com",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Smiling_businesspeople_(Unsplash).jpg"
+ },
+ {
+  "file": "paperwork-laptop.webp",
+  "title": "File:Brainstorming over paper (Unsplash).jpg",
+  "creator": "Helloquence",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Brainstorming_over_paper_(Unsplash).jpg"
+ },
+ {
+  "file": "signing-paperwork.webp",
+  "title": "File:Sign here (Unsplash).jpg",
+  "creator": "Helloquence",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Sign_here_(Unsplash).jpg"
+ },
+ {
+  "file": "office-desk-worker.webp",
+  "title": "File:Desk-office-workspace-coworking (23699033283).jpg",
+  "creator": "www.Pixel.la Free Stock Photos",
+  "license": "cc0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Desk-office-workspace-coworking_(23699033283).jpg"
  }
 ]
