@@ -56,6 +56,13 @@ export function Tbc({ label = 'To be confirmed' }) {
 
 export const val = (v, label) => (v ? v : <Tbc label={label} />);
 
-export function Eyebrow({ children, light = false }) {
-  return <p className={`eyebrow${light ? ' eyebrow--light' : ''}`}>{children}</p>;
+/* Section index: a quiet "01 — Services" line, not a pill label. */
+export function Eyebrow({ children, light = false, n }) {
+  return (
+    <p className={`kicker${light ? ' kicker--light' : ''}`}>
+      {n && <span className="kicker__n">{n}</span>}
+      <span className="kicker__line" aria-hidden="true" />
+      {children}
+    </p>
+  );
 }
