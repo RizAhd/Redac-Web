@@ -1,6 +1,4 @@
 // Motion setup: GSAP + ScrollTrigger + SplitText, Lenis smooth scrolling.
-// Animations run by default on every device. Visitors who want less motion can switch it
-// off with the "Reduce motion" switch in the footer (saved in this browser only).
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -12,15 +10,8 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 
 export { gsap, ScrollTrigger, SplitText, useGSAP };
 
-const KEY = 'redac-reduce-motion';
-const read = () => { try { return localStorage.getItem(KEY) === '1'; } catch { return false; } };
-if (typeof document !== 'undefined') document.documentElement.classList.toggle('reduce-motion', read());
-
-export const reduced = () => document.documentElement.classList.contains('reduce-motion');
-export function setReduced(on) {
-  try { localStorage.setItem(KEY, on ? '1' : '0'); } catch { /* storage blocked */ }
-  window.location.reload();
-}
+// Animations always run. reduced() is kept so components have one place to check.
+export const reduced = () => false;
 export const isDesktop = () => window.matchMedia('(min-width: 961px)').matches;
 
 export const EASE = { out: 'expo.out', soft: 'power3.out', spring: 'back.out(1.5)' };
@@ -28,7 +19,7 @@ export const EASE = { out: 'expo.out', soft: 'power3.out', spring: 'back.out(1.5
 let lenis = null;
 export function startLenis() {
   if (lenis || reduced()) return lenis;
-  lenis = new Lenis({ duration: 1.15, smoothWheel: true, wheelMultiplier: 0.95 });
+  lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.4 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);

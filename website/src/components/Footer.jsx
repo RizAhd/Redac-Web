@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICES, C, CONTACT } from '../lib/data.js';
-import { gsap, useGSAP, reduced, setReduced, SplitText } from '../lib/motion.js';
+import { gsap, useGSAP, reduced, SplitText } from '../lib/motion.js';
 import { Btn, Icon, Tbc } from './ui.jsx';
 import { Logo } from './Nav.jsx';
 import { Ticker } from './blocks.jsx';
@@ -66,9 +66,6 @@ export default function Footer() {
 
       <div className="footer__legal">
         <span>&copy; {new Date().getFullYear()} {C.name}</span>
-        <button type="button" className="motion-toggle" aria-pressed={reduced()} onClick={() => setReduced(!reduced())}>
-          <i aria-hidden="true" /> Reduce motion
-        </button>
         <span>{C.tagline}</span>
       </div>
     </footer>

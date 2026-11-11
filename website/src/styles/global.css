@@ -514,8 +514,6 @@ a.info__row:hover { transform: translateY(-3px); }
 .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px 34px 24px; font-size: var(--fs-14); color: rgba(255,255,255,.8); }
 
 /* ------------------------------------------------------- reduced motion */
-/* only when the visitor turns on "Reduce motion" in the footer */
-html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after { transition: none !important; animation: none !important; }
 
 /* ------------------------------------------------------------- responsive */
 @media (max-width: 1180px) {

@@ -128,8 +128,8 @@ export function ServiceStack({ items = SERVICES }) {
     const cards = gsap.utils.toArray('.stk__card', ref.current);
     cards.forEach((card, i) => {
       if (i === cards.length - 1) return;
-      gsap.to(card.querySelector('.stk__inner'), {
-        scale: 0.94, filter: 'brightness(0.86)', ease: 'none',
+      gsap.fromTo(card.querySelector('.stk__inner'), { scale: 1, filter: 'brightness(1)' }, {
+        scale: 0.94, filter: 'brightness(0.9)', ease: 'none', immediateRender: false,
         scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 110px', scrub: true },
       });
     });

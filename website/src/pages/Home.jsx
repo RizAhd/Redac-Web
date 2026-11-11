@@ -21,18 +21,12 @@ export default function Home() {
       .from('.hero__frame > img', { scale: 1.3, duration: 2.4 }, 0)
       .from(SplitText.create('.hero h1', { type: 'lines', mask: 'lines' }).lines, { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.55)
       .from('.hero [data-in]', { y: 30, autoAlpha: 0, duration: 1.1, stagger: 0.1 }, 0.85)
-      .from('.hcard--a', { x: 120, y: 60, rotate: 6, autoAlpha: 0, duration: 1.6 }, 0.9)
-      .from('.hero .status', { x: 80, y: -40, rotate: -5, autoAlpha: 0, duration: 1.6 }, 1)
-      .from('.hchip', { scale: 0.4, autoAlpha: 0, duration: 1.2, ease: 'back.out(1.8)', stagger: 0.12 }, 1.1);
+      .from('.hero__side > *', { x: 80, autoAlpha: 0, duration: 1.4, stagger: 0.15 }, 0.95);
     if (desk) {
       const st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
       gsap.to('.hero__frame', { scale: 0.95, borderRadius: 56, ease: 'none', scrollTrigger: st });
       gsap.to('.hero__frame > img', { yPercent: 12, ease: 'none', scrollTrigger: { ...st } });
-      gsap.to('.hcard--a', { y: -90, ease: 'none', scrollTrigger: { ...st } });
-      gsap.to('.hero .status', { y: -50, ease: 'none', scrollTrigger: { ...st } });
-      gsap.to('.hchip--1', { y: -160, rotate: -30, ease: 'none', scrollTrigger: { ...st } });
-      gsap.to('.hchip--2', { y: -110, rotate: 25, ease: 'none', scrollTrigger: { ...st } });
-      gsap.to('.hchip--3', { y: -200, rotate: -12, ease: 'none', scrollTrigger: { ...st } });
+      gsap.to('.hero__side', { y: -70, ease: 'none', scrollTrigger: { ...st } });
     }
 
     /* 2. statement: words fill in with the scroll, highlights sweep, photo pills open (Quadro) */
@@ -106,17 +100,9 @@ export default function Home() {
               <Btn to="/services" variant="glass" arrow={false}>Explore services</Btn>
             </div>
           </div>
-          <StatusCard className="status--glass" />
-          <div className="hcard hcard--a">
-            <div className="hcard__img"><Photo k="svc-company-registration-and-asic" alt="" /></div>
-            <div>
-              <b>Tax, books, payroll and company filings, under one roof.</b>
-              <Link to="/services" className="hcard__link">See all 8 services <Icon name="arrow" size={14} /></Link>
-            </div>
+          <div className="hero__side">
+            <StatusCard className="status--glass" />
           </div>
-          <span className="hchip hchip--1" aria-hidden="true"><Icon name="doc" /></span>
-          <span className="hchip hchip--2" aria-hidden="true"><Icon name="chart" /></span>
-          <span className="hchip hchip--3" aria-hidden="true"><Icon name="calendar" /></span>
         </div>
       </section>
 
@@ -130,7 +116,7 @@ export default function Home() {
           </p>
           <div className="statement__foot" data-stagger>
             <Btn to="/about" variant="blue">About REDAC</Btn>
-            <Link className="link link--big" to="/team">Meet the team <Icon name="arrow" size={16} /></Link>
+            <Btn to="/team" variant="outline" arrow={false}>Meet the team</Btn>
           </div>
         </div>
       </section>
