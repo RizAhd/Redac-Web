@@ -48,7 +48,8 @@ export default function Book() {
   return (
     <div ref={ref}>
       <PageHero crumbs={[{ label: 'Book a consultation' }]} title="Book a" accent="consultation" ghost="Book" photoKey="step-book"
-        lead="Pick a day and time, tell us what you need, and we confirm by email." />
+        lead="Pick a day and time, tell us what you need, and we confirm by email."
+        facts={[{ icon: 'calendar', label: 'Weekdays' }, { icon: 'mail', label: 'Confirmed by email' }, { icon: 'chat', label: 'In person or online' }]} note={{ icon: 'clock', title: 'Takes 2 minutes', text: 'Choose a time, add your details.' }} />
       <section className="sec">
         <div className="wrap">
           {INTEGRATIONS.calendly_url

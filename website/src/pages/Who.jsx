@@ -9,17 +9,18 @@ export default function Who() {
   return (
     <div ref={ref}>
       <PageHero crumbs={[{ to: '/about', label: 'About' }, { label: 'Who we help' }]} title="Who we" accent="help" ghost="Clients" photoKey="who-small-businesses"
-        lead="Individuals, small businesses and companies. Find the services that fit your situation." />
+        lead="Individuals, small businesses and companies. Find the services that fit your situation."
+        facts={[{ icon: 'person', label: 'Individuals' }, { icon: 'chart', label: 'Small businesses' }, { icon: 'building', label: 'Companies' }]} note={{ icon: 'check', title: 'One firm', text: 'Grow with us from one return to a company.' }} />
       {AUDIENCES.map((a, i) => (
         <section className={`sec${i === 1 ? ' band-light' : ''}`} id={a.slug} key={a.slug}>
           <div className="wrap">
             <div className={`who-row${i % 2 ? ' who-row--flip' : ''}`}>
               <div>
-                <Eyebrow>{a.title}</Eyebrow>
+                <Eyebrow n={String(i + 1).padStart(2, '0')}>{a.title}</Eyebrow>
                 <h2 className="h2" data-split>{a.headline}</h2>
                 <p className="lead muted" data-reveal>{a.text}</p>
               </div>
-              <div className="who-row__img" data-reveal><Photo k={`who-${a.slug}`} alt={a.title} /></div>
+              <div className="who-row__img" data-img><Photo k={`who-${a.slug}`} alt={a.title} /></div>
             </div>
             <ServiceGrid items={a.services.map((s) => SVC[s])} />
           </div>

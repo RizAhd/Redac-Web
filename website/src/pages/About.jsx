@@ -8,12 +8,14 @@ export default function About() {
   usePageReveal(ref);
   return (
     <div ref={ref}>
-      <PageHero crumbs={[{ label: 'About us' }]} title="About" accent="REDAC" ghost="About" photoKey="about" lead={ABOUT.intro} />
+      <PageHero crumbs={[{ label: 'About us' }]} title="About" accent="REDAC" ghost="About" photoKey="about" lead={ABOUT.intro}
+        facts={[{ icon: 'doc', label: '8 services' }, { icon: 'person', label: '3 client groups' }, { icon: 'check', label: 'You approve first' }]}
+        note={{ icon: 'building', title: 'One firm', text: 'Tax, books, payroll and filings together.' }} />
 
       <section className="sec">
         <div className="wrap about-split">
           <div className="prose" data-reveal>
-            <Eyebrow>Our story</Eyebrow>
+            <Eyebrow n="01">Our story</Eyebrow>
             <h2 className="h3">Who we are</h2>
             <p>{ABOUT.intro}</p>
             <p>{ABOUT.story || <Tbc label="Firm history and story from REDAC" />}</p>
@@ -22,16 +24,16 @@ export default function About() {
               <div><dt>Registrations</dt><dd>{C.registrations || <Tbc label="Tax agent and professional registrations" />}</dd></div>
             </dl>
           </div>
-          <div className="about-photos" data-reveal>
-            <div className="about-photos__a"><Photo k="who-companies" alt="" /></div>
-            <div className="about-photos__b"><Photo k="step-book" alt="" /></div>
+          <div className="about-photos">
+            <div className="about-photos__a" data-img><Photo k="who-companies" alt="" /></div>
+            <div className="about-photos__b" data-parallax="8"><Photo k="step-book" alt="" /></div>
           </div>
         </div>
       </section>
 
       <section className="sec band-light">
         <div className="wrap">
-          <div className="head-split"><div><Eyebrow>How we work</Eyebrow><h2 className="h2" data-split>What you can <span className="accent">expect</span></h2></div><Btn to="/team" variant="blue">Meet the team</Btn></div>
+          <div className="head-split"><div><Eyebrow n="02">How we work</Eyebrow><h2 className="h2" data-split>What you can <span className="accent">expect</span></h2></div><Btn to="/team" variant="blue">Meet the team</Btn></div>
           <div className="values">
             {ABOUT.values.map((v, i) => (
               <article className="value" key={v.title} data-pop><b>{String(i + 1).padStart(2, '0')}</b><h3>{v.title}</h3><p>{v.text}</p></article>
@@ -42,7 +44,7 @@ export default function About() {
 
       <section className="sec">
         <div className="wrap">
-          <div className="head-split"><div><Eyebrow>Services</Eyebrow><h2 className="h2" data-split>What we <span className="accent">do</span></h2></div></div>
+          <div className="head-split"><div><Eyebrow n="03">Services</Eyebrow><h2 className="h2" data-split>What we <span className="accent">do</span></h2></div></div>
           <ServiceGrid />
         </div>
       </section>

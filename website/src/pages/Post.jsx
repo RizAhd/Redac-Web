@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { POSTS } from '../lib/data.js';
 import { PageHero, PostCards, usePageReveal } from '../components/blocks.jsx';
-import { Btn, Eyebrow } from '../components/ui.jsx';
+import { Btn } from '../components/ui.jsx';
 import NotFound from './NotFound.jsx';
 
 export default function Post() {
@@ -30,7 +30,7 @@ export default function Post() {
         </div>
       </section>
       <section className="sec band-light">
-        <div className="wrap"><Eyebrow>More articles</Eyebrow><PostCards items={POSTS.filter((x) => x.slug !== slug)} /></div>
+        <div className="wrap"><h2 className="h3 more-title" data-split>More articles</h2><PostCards items={POSTS.filter((x) => x.slug !== slug)} /></div>
       </section>
     </div>
   );

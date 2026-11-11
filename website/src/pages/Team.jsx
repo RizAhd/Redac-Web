@@ -9,11 +9,13 @@ export default function Team() {
   return (
     <div ref={ref}>
       <PageHero crumbs={[{ to: '/about', label: 'About' }, { label: 'Our team' }]} title="Our" accent="team" ghost="Team" photoKey="cta"
-        lead="The people behind REDAC & Associates." />
+        lead="The people behind REDAC & Associates. Qualified, approachable and easy to reach."
+        facts={[{ icon: 'chat', label: 'Same people every time' }, { icon: 'shield', label: 'Registered professionals' }]}
+        note={{ icon: 'person', title: 'Meet us first', text: 'Your first consultation is a conversation.' }} />
       <section className="sec">
-        <div className="wrap team">
+        <div className="wrap team" data-stagger>
           {TEAM.map((m, i) => (
-            <article className="member" key={i} data-pop>
+            <article className="member" key={i}>
               <div className="member__ph">
                 {m.photo ? <img src={`${import.meta.env.BASE_URL}img/team/${m.photo}`} alt={m.name || ''} loading="lazy" /> : <><Icon name="user" size={96} /><em>Photo from REDAC</em></>}
               </div>

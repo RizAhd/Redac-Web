@@ -59,7 +59,8 @@ Anything still `null` shows a small "to be confirmed" marker on the page, so not
 - Colours: royal blue, white and green (no black).
 - Type: Manrope throughout, Roboto Condensed for the oversized display words, on one fluid type scale.
 - Layout and motion ideas inspired by the OneFin, Quadro and Kora Framer templates, written from scratch.
-  No template code or assets are used. Animations respect the reduced-motion setting.
+  No template code or assets are used. Animations run by default on every device; visitors can
+  turn them off with the "Reduce motion" switch in the footer.
 - Client documents (proposal, checklists and other PDFs) are kept out of this repository.
 
 ---
