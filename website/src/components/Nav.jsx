@@ -13,8 +13,8 @@ const LINKS = [
 ];
 const ABOUT = [
   { to: '/about', label: 'About us', text: 'Who we are and how we work', icon: 'building' },
-  { to: '/team', label: 'Our team', text: 'The people behind REDAC', icon: 'person' },
-  { to: '/who-we-help', label: 'Who we help', text: 'Individuals, businesses, companies', icon: 'chart' },
+  { to: '/team', label: 'Our team', text: 'The people behind REDAC', icon: 'handshake' },
+  { to: '/who-we-help', label: 'Who we help', text: 'Individuals, businesses, companies', icon: 'team' },
 ];
 
 export function Logo() {

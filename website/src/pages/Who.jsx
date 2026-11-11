@@ -10,7 +10,7 @@ export default function Who() {
     <div ref={ref}>
       <PageHero crumbs={[{ to: '/about', label: 'About' }, { label: 'Who we help' }]} title="Who we" accent="help" ghost="Clients" photoKey="who-small-businesses"
         lead="Individuals, small businesses and companies. Find the services that fit your situation."
-        facts={[{ icon: 'person', label: 'Individuals' }, { icon: 'chart', label: 'Small businesses' }, { icon: 'building', label: 'Companies' }]} note={{ icon: 'check', title: 'One firm', text: 'Grow with us from one return to a company.' }} />
+        facts={[{ icon: 'person', label: 'Individuals' }, { icon: 'shop', label: 'Small businesses' }, { icon: 'building', label: 'Companies' }]} note={{ icon: 'check', title: 'One firm', text: 'Grow with us from one return to a company.' }} />
       {AUDIENCES.map((a, i) => (
         <section className={`sec${i === 1 ? ' band-light' : ''}`} id={a.slug} key={a.slug}>
           <div className="wrap">
