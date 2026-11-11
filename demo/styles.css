@@ -81,6 +81,8 @@ h1, h2, h3, p { margin: 0; }
   box-shadow: 0 6px 20px -6px rgba(56,189,248,.7);
 }
 .brand__name em { font-style: normal; font-weight: 500; color: var(--muted); }
+.nav .brand { justify-self: start; padding: 6px 16px 6px 6px; border-radius: 999px; background: rgba(13, 21, 48, .55); border: 1px solid var(--line); backdrop-filter: blur(16px); }
+.nav .brand__name em { color: rgba(245, 247, 255, .7); }
 .nav__pill {
   display: flex; gap: 4px; padding: 6px; border-radius: 999px;
   background: rgba(13, 21, 48, .55); border: 1px solid var(--line); backdrop-filter: blur(16px);
