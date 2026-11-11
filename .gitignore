@@ -13,3 +13,12 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# Reference template copies (study only, never committed)
+kora/
+onefin/
+quadro/
+
+# Build output and dependencies
+website/node_modules/
+website/dist/
