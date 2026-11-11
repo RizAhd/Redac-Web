@@ -1,32 +1,65 @@
-# REDAC & Associates — Website Project
+# REDAC & Associates — Website
 
-Website design, hosting and SEO project for **REDAC & Associates**, a tax and accounting firm.
+Website for **REDAC & Associates**, a tax and accounting firm: design, hosting and SEO project.
 
-## Contents
+Built with **React + Vite**, animated with **GSAP** (ScrollTrigger, SplitText) and **Lenis** smooth
+scrolling. All client data lives in one JSON file, so the site can be updated quickly once the
+client sends their details.
 
-| Path | What it is |
+## Pages
+
+| Section | Pages |
 |---|---|
-| `demo/` | Static demo of the new website (HTML, CSS, vanilla JS) to show the client the design direction |
+| Core | Home, About us, Our team, Contact us, Book a consultation |
+| Services | Services overview + 8 service pages (individual tax returns; business tax and financial reports; GST and BAS; bookkeeping and payroll; business advisory and project finance; company registration and ASIC; corporate administration; tax compliance) |
+| Content | Who we help, FAQ, News and insights (+ articles) |
+| Trust | Privacy policy, Disclaimer and terms of use, Enquiry confirmation (thank you), Photo credits, 404 |
 
-## Run the demo
-
-Open `demo/index.html` in a browser, or serve the folder:
+## Run it
 
 ```sh
-cd demo
-python -m http.server 8000
+cd website
+npm install
+npm run dev       # local development with live reload
+npm run build     # production build into website/dist
+npm run preview   # serve the production build
 ```
 
-Then visit http://localhost:8000.
+The built site in `website/dist` is fully static and can be uploaded to any host.
 
-## Demo sections
+## Folder layout
 
-Hero, services (all eight services from the proposal), who we help, process, why REDAC, FAQ,
-booking form and footer. The final site will be built on WordPress, as the proposal describes.
+```
+website/
+  src/data/site.json          <- ALL client data: company, contact, team, services, FAQ, articles, photos
+  src/data/photo-credits.json <- credits for the stand-in photos
+  public/img/                 <- photos (replace with the client's own)
+  src/pages/                  <- one file per page
+  src/components/             <- nav, footer and shared sections
+  src/lib/motion.js           <- GSAP and Lenis setup and the reveal helpers
+  src/styles/global.css       <- design system (colours, type scale, layout)
+```
 
-## Notes
+## Update the site when client data arrives
 
-- The booking form posts to a placeholder `mailto:` address until the client's email or form service is set up.
+1. Open `website/src/data/site.json`.
+2. Replace any `null` with the real value, for example:
+   - `contact.phone`, `contact.email`, `contact.address`, `contact.hours`, `contact.map_embed_url`
+   - `team[]`: `name`, `role`, `qualifications`, `bio`, `photo` (photo files go in `public/img/team/`)
+   - `company.year_founded`, `company.registrations`
+   - `integrations.calendly_url` (switches the booking page to the client's Calendly)
+   - `integrations.enquiry_form_action` (where the enquiry form sends)
+3. Photos: put the file in `website/public/img/` and set its name under `images` (for example `"hero": "hero.jpg"`).
+4. Run `npm run build`.
+
+Anything still `null` shows a small "to be confirmed" marker on the page, so nothing is missed.
+
+## Design
+
+- Colours: royal blue, white and green (no black).
+- Type: Manrope throughout, Roboto Condensed for the oversized display words, on one fluid type scale.
+- Layout and motion ideas inspired by the OneFin, Quadro and Kora Framer templates, written from scratch.
+  No template code or assets are used. Animations respect the reduced-motion setting.
 - Client documents (proposal, checklists and other PDFs) are kept out of this repository.
 
 ---
