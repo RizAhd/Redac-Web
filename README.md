@@ -27,6 +27,13 @@ npm run preview   # serve the production build
 
 The built site in `website/dist` is fully static and can be uploaded to any host.
 
+## Live site
+
+Published with GitHub Pages from the `gh-pages` branch: https://rizahd.github.io/Redac-Web/
+
+To publish an update, run `npm run build` in `website`, then commit the contents of `website/dist`
+(plus an empty `.nojekyll` file) to the `gh-pages` branch and push it.
+
 ## Folder layout
 
 ```
