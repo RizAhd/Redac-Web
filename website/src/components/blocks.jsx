@@ -16,7 +16,7 @@ export function PageHero({ crumbs = [], title, accent, lead, photoKey, ghost, fa
   useGSAP(() => {
     if (reduced()) return;
     revealIn(ref.current);
-    gsap.from('.phero__photo', { clipPath: 'inset(20% 16% 20% 16% round 40px)', duration: 1.6, ease: 'expo.inOut', delay: 0.1 });
+    gsap.from('.phero__photo', { clipPath: 'inset(20% 16% 20% 16% round 24px)', duration: 1.6, ease: 'expo.inOut', delay: 0.1 });
     gsap.from('.phero__photo img', { scale: 1.35, duration: 2, ease: 'expo.out', delay: 0.1 });
     gsap.from('.phero__note', { y: 40, autoAlpha: 0, duration: 1.2, ease: 'back.out(1.4)', delay: 0.9 });
     gsap.from('.phero__facts li', { y: 24, autoAlpha: 0, duration: 0.9, ease: 'expo.out', stagger: 0.07, delay: 0.6 });

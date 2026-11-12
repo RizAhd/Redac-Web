@@ -87,7 +87,7 @@ export function revealIn(scope) {
   q('[data-img]').forEach((el) => {
     const img = el.querySelector('img');
     const tl = gsap.timeline({ scrollTrigger: onScroll(el, 'top 90%'), delay: el.dataset.now !== undefined ? 0.2 : 0 });
-    tl.from(el, { clipPath: 'inset(14% 10% 14% 10% round 40px)', duration: 1.5, ease: 'expo.inOut' });
+    tl.from(el, { clipPath: 'inset(14% 10% 14% 10% round 24px)', duration: 1.5, ease: 'expo.inOut' });
     if (img) tl.from(img, { scale: 1.3, duration: 1.8, ease: 'expo.out' }, 0.1);
   });
 
