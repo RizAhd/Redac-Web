@@ -17,7 +17,7 @@ export default function Home() {
     /* 1. hero: frame opens, photo settles, lines rise, cards fly in */
     const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
     (document.fonts?.ready || Promise.resolve()).then(() => tl.play());
-    tl.from('.hero__frame', { clipPath: 'inset(6% 5% 6% 5% round 56px)', duration: 1.8, ease: 'expo.inOut' })
+    tl.from('.hero__frame', { clipPath: 'inset(6% 5% 6% 5% round 24px)', duration: 1.8, ease: 'expo.inOut' })
       // desktop: the photo fills the frame and settles; phones: the framed photo opens below the text
       .from('.hero__frame > img', desk ? { scale: 1.3, duration: 2.4 } : { clipPath: 'inset(20% 12% 20% 12% round 24px)', autoAlpha: 0, duration: 1.6, ease: 'expo.inOut' }, desk ? 0 : 0.9)
       .from(SplitText.create('.hero h1', { type: 'lines', mask: 'lines' }).lines, { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.55)
@@ -25,7 +25,7 @@ export default function Home() {
       .from('.hero__side > *', { x: 80, autoAlpha: 0, duration: 1.4, stagger: 0.15 }, 0.95);
     if (desk) {
       const st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('.hero__frame', { scale: 0.95, borderRadius: 56, ease: 'none', scrollTrigger: st });
+      gsap.to('.hero__frame', { scale: 0.96, borderRadius: 24, ease: 'none', scrollTrigger: st });
       gsap.to('.hero__frame > img', { yPercent: 12, ease: 'none', scrollTrigger: { ...st } });
       gsap.to('.hero__side', { y: -70, ease: 'none', scrollTrigger: { ...st } });
     }
@@ -33,7 +33,7 @@ export default function Home() {
     /* 2. statement: words fill in with the scroll, highlights sweep, photo pills open (Quadro) */
     const words = SplitText.create('.statement__text', { type: 'words', wordsClass: 'sw' }).words;
     gsap.fromTo(words, { opacity: 0.15 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.statement', start: 'top 75%', end: 'bottom 65%', scrub: true } });
-    gsap.from('.pill', { width: 0, duration: 1.3, ease: 'expo.out', stagger: 0.15, scrollTrigger: { trigger: '.statement', start: 'top 65%', once: true } });
+    gsap.from('.mosaic__chip', { y: 20, autoAlpha: 0, duration: 1, ease: 'expo.out', stagger: 0.12, delay: 0.6, scrollTrigger: { trigger: '.mosaic', start: 'top 80%', once: true } });
     gsap.utils.toArray('.hl').forEach((h) => {
       gsap.fromTo(h, { backgroundSize: '0% 100%' }, { backgroundSize: '100% 100%', ease: 'none', scrollTrigger: { trigger: h, start: 'top 75%', end: 'top 45%', scrub: true } });
     });
@@ -84,13 +84,27 @@ export default function Home() {
 
       {/* 2. STATEMENT */}
       <section className="statement sec">
-        <div className="wrap">
-          <p className="statement__text">
-            We handle your <span className="pill"><Photo k="pill-1" alt="" /></span> <mark className="hl">tax returns</mark>, your <span className="pill"><Photo k="pill-2" alt="" /></span> <mark className="hl">books and payroll</mark>, and your <span className="pill"><Photo k="pill-3" alt="" /></span> <mark className="hl">company filings</mark>, so you can focus on your life and your business.
-          </p>
-          <div className="statement__foot" data-stagger>
-            <Btn to="/about" variant="blue">About REDAC</Btn>
-            <Btn to="/team" variant="outline" arrow={false}>Meet the team</Btn>
+        <div className="wrap statement__grid">
+          <div className="statement__copy">
+            <p className="statement__text">
+              We handle your <mark className="hl">tax returns</mark>, your <mark className="hl">books and payroll</mark>, and your <mark className="hl">company filings</mark>, so you can focus on your life and your business.
+            </p>
+            <div className="statement__foot" data-stagger>
+              <Btn to="/about" variant="blue">About REDAC</Btn>
+              <Btn to="/team" variant="outline" arrow={false}>Meet the team</Btn>
+            </div>
+          </div>
+          <div className="mosaic">
+            {[
+              { k: 'pill-1', to: '/services/individual-tax-returns', icon: 'receipt', label: 'Tax returns' },
+              { k: 'pill-2', to: '/services/bookkeeping-and-payroll', icon: 'book', label: 'Books and payroll' },
+              { k: 'pill-3', to: '/services/company-registration-and-asic', icon: 'building', label: 'Company filings' },
+            ].map((t, i) => (
+              <Link key={t.k} to={t.to} className={`mosaic__tile mosaic__tile--${i}`} data-img>
+                <Photo k={t.k} alt="" />
+                <span className="mosaic__chip"><Icon name={t.icon} size={16} />{t.label}<Icon name="arrow" size={14} /></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
