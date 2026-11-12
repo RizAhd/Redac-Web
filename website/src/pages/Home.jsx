@@ -18,7 +18,8 @@ export default function Home() {
     const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
     (document.fonts?.ready || Promise.resolve()).then(() => tl.play());
     tl.from('.hero__frame', { clipPath: 'inset(6% 5% 6% 5% round 56px)', duration: 1.8, ease: 'expo.inOut' })
-      .from('.hero__frame > img', { scale: 1.3, duration: 2.4 }, 0)
+      // desktop: the photo fills the frame and settles; phones: the framed photo opens below the text
+      .from('.hero__frame > img', desk ? { scale: 1.3, duration: 2.4 } : { clipPath: 'inset(20% 12% 20% 12% round 24px)', autoAlpha: 0, duration: 1.6, ease: 'expo.inOut' }, desk ? 0 : 0.9)
       .from(SplitText.create('.hero h1', { type: 'lines', mask: 'lines' }).lines, { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.55)
       .from('.hero [data-in]', { y: 30, autoAlpha: 0, duration: 1.1, stagger: 0.1 }, 0.85)
       .from('.hero__side > *', { x: 80, autoAlpha: 0, duration: 1.4, stagger: 0.15 }, 0.95);
