@@ -35,7 +35,13 @@ function RouteEffects() {
     const r = setTimeout(() => { stopRows = autoRows(); }, 600);
     // restart on resize or rotation so rows match the new layout
     let rt = 0;
-    const onResize = () => { clearTimeout(rt); rt = setTimeout(() => { stopRows(); stopRows = autoRows(); }, 300); };
+    // phones fire resize when the address bar hides on scroll: only restart when the width changes
+    let lastW = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      clearTimeout(rt); rt = setTimeout(() => { stopRows(); stopRows = autoRows(); }, 300);
+    };
     window.addEventListener('resize', onResize);
     return () => { clearTimeout(t); clearTimeout(r); clearTimeout(rt); window.removeEventListener('resize', onResize); stopRows(); };
   }, [pathname, hash]);

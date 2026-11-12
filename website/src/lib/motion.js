@@ -116,63 +116,82 @@ export function revealIn(scope) {
 }
 
 /**
- * Card rows that scroll sideways on phones and tablets (.stk, .fan, .sgrid, .aud, .posts)
- * drift continuously and seamlessly, like a ticker: the cards are repeated once (hidden from
- * screen readers) and the row wraps when it reaches the copy. Touching or swiping pauses it,
- * then it carries on from where the visitor left it. Runs only while the row is on screen.
+ * Card rows on phones and tablets (.stk, .fan, .sgrid, .aud, .posts) loop sideways on their own,
+ * like a ticker. The cards are repeated once (hidden from screen readers) and every card is moved
+ * with the Web Animations API, which runs smoothly on all phone browsers. A finger can drag the
+ * row; it carries on looping a moment after release. Returns a cleanup function.
  */
 export function autoRows(root = document) {
+  const SPEED = 40; // px per second
   const rows = [...root.querySelectorAll('.stk, .fan, .sgrid, .aud, .posts')];
   const stops = [];
   rows.forEach((row) => {
-    if (row.scrollWidth <= row.clientWidth + 4) return; // not a sideways row at this width
+    if (row.scrollWidth <= row.clientWidth + 4) return; // a normal grid at this width
+    row.scrollLeft = 0;
     const originals = [...row.children];
     const clones = originals.map((el) => {
       const c = el.cloneNode(true);
       c.setAttribute('aria-hidden', 'true');
       c.setAttribute('inert', '');
       c.dataset.clone = '';
-      // copies start clean: never carry a half-finished reveal
-      [c, ...c.querySelectorAll('[style]')].forEach((n) => { n.style.removeProperty('transform'); n.style.removeProperty('opacity'); n.style.removeProperty('visibility'); n.style.removeProperty('transition'); n.style.removeProperty('translate'); });
+      [c, ...c.querySelectorAll('[style]')].forEach((n) => ['transform', 'opacity', 'visibility', 'transition', 'translate'].forEach((p) => n.style.removeProperty(p)));
       row.appendChild(c);
       return c;
     });
-    const snap = row.style.scrollSnapType;
-    row.style.scrollSnapType = 'none';
-    const loop = () => clones[0].offsetLeft - originals[0].offsetLeft;
-    let pos = row.scrollLeft;
-    let held = 0;
-    let visible = false;
-    let last = performance.now();
-    let raf = 0;
-    const hold = () => { held = performance.now(); };
-    const onScroll = () => { if (performance.now() - held < 2500) pos = row.scrollLeft; };
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.2 });
-    io.observe(row);
-    row.addEventListener('pointerdown', hold, { passive: true });
-    row.addEventListener('touchstart', hold, { passive: true });
-    row.addEventListener('touchmove', hold, { passive: true });
-    row.addEventListener('wheel', hold, { passive: true });
-    row.addEventListener('scroll', onScroll, { passive: true });
-    const frame = (now) => {
-      const dt = Math.min(64, now - last);
-      last = now;
-      if (visible && now - held > 2500) {
-        pos += dt * 0.045; // about 45px a second: calm, readable drift
-        const L = loop();
-        if (pos >= L) pos -= L;
-        if (pos < 0) pos += L;
-        row.scrollLeft = pos;
-      }
-      raf = requestAnimationFrame(frame);
+    // the reveal on these cards is not needed while they loop: show them now
+    gsap.set(originals, { clearProps: 'opacity,visibility,transform,transition' });
+    const L = clones[0].offsetLeft - originals[0].offsetLeft;
+    const prev = { overflow: row.style.overflowX, touch: row.style.touchAction };
+    row.style.overflowX = 'hidden';
+    row.style.touchAction = 'pan-y';
+    row.classList.add('is-looping');
+    const duration = (L / SPEED) * 1000;
+    const anims = [...originals, ...clones].map((el) => el.animate(
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(-' + L + 'px)' }],
+      { duration, iterations: Infinity, easing: 'linear' },
+    ));
+    const setTime = (t) => anims.forEach((a) => { a.currentTime = ((t % duration) + duration) % duration; });
+    let drag = null;
+    let resume = 0;
+    const down = (e) => {
+      clearTimeout(resume);
+      anims.forEach((a) => a.pause());
+      drag = { x: e.clientX, t: anims[0].currentTime || 0, moved: false };
     };
-    raf = requestAnimationFrame(frame);
+    const move = (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 4) drag.moved = true;
+      setTime(drag.t - (dx / SPEED) * 1000);
+    };
+    const up = () => {
+      if (!drag) return;
+      drag = null;
+      resume = setTimeout(() => anims.forEach((a) => a.play()), 1200);
+    };
+    const click = (e) => { if (row.dataset.dragged) { e.preventDefault(); e.stopPropagation(); } };
+    const flag = () => { if (drag && drag.moved) { row.dataset.dragged = '1'; setTimeout(() => delete row.dataset.dragged, 50); } };
+    row.addEventListener('pointerdown', down);
+    window.addEventListener('pointermove', move, { passive: true });
+    const release = () => { flag(); up(); };
+    window.addEventListener('pointerup', release);
+    window.addEventListener('pointercancel', up);
+    row.addEventListener('click', click, true);
+    // pause while off screen to save battery
+    const io = new IntersectionObserver(([e]) => { if (!drag) anims.forEach((a) => (e.isIntersecting ? a.play() : a.pause())); });
+    io.observe(row);
     stops.push(() => {
-      cancelAnimationFrame(raf); io.disconnect();
-      ['pointerdown', 'touchstart', 'touchmove', 'wheel'].forEach((t) => row.removeEventListener(t, hold));
-      row.removeEventListener('scroll', onScroll);
+      clearTimeout(resume); io.disconnect();
+      anims.forEach((a) => a.cancel());
+      row.removeEventListener('pointerdown', down);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', release);
+      window.removeEventListener('pointercancel', up);
+      row.removeEventListener('click', click, true);
       clones.forEach((c) => c.remove());
-      row.style.scrollSnapType = snap;
+      row.style.overflowX = prev.overflow;
+      row.style.touchAction = prev.touch;
+      row.classList.remove('is-looping');
     });
   });
   return () => stops.forEach((s) => s());
