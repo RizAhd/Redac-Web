@@ -33,7 +33,11 @@ function RouteEffects() {
     const t = setTimeout(() => ScrollTrigger.refresh(), 120);
     let stopRows = () => {};
     const r = setTimeout(() => { stopRows = autoRows(); }, 600);
-    return () => { clearTimeout(t); clearTimeout(r); stopRows(); };
+    // restart on resize or rotation so rows match the new layout
+    let rt = 0;
+    const onResize = () => { clearTimeout(rt); rt = setTimeout(() => { stopRows(); stopRows = autoRows(); }, 300); };
+    window.addEventListener('resize', onResize);
+    return () => { clearTimeout(t); clearTimeout(r); clearTimeout(rt); window.removeEventListener('resize', onResize); stopRows(); };
   }, [pathname, hash]);
   return null;
 }

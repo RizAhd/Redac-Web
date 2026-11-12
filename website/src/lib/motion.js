@@ -62,24 +62,26 @@ export function revealIn(scope) {
 
   const rise = q('[data-reveal]');
   if (rise.length) {
-    gsap.set(rise, { y: 48, autoAlpha: 0 });
+    gsap.set(rise, { y: 48, autoAlpha: 0, transition: 'none' });
     ScrollTrigger.batch(rise, {
       start: 'top 92%', once: true,
-      onEnter: (els) => gsap.to(els, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE.out, stagger: 0.09, overwrite: true }),
+      onEnter: (els) => gsap.to(els, { y: 0, autoAlpha: 1, duration: 1.1, ease: EASE.out, stagger: 0.09, overwrite: true, clearProps: 'transform,transition' }),
     });
   }
 
   const pop = q('[data-pop]');
   if (pop.length) {
-    gsap.set(pop, { y: 50, scale: 0.92, autoAlpha: 0 });
+    gsap.set(pop, { y: 50, scale: 0.92, autoAlpha: 0, transition: 'none' });
     ScrollTrigger.batch(pop, {
       start: 'top 94%', once: true,
-      onEnter: (els) => gsap.to(els, { y: 0, scale: 1, autoAlpha: 1, duration: 1.1, ease: 'back.out(1.2)', stagger: 0.08, overwrite: true }),
+      onEnter: (els) => gsap.to(els, { y: 0, scale: 1, autoAlpha: 1, duration: 1.1, ease: 'back.out(1.2)', stagger: 0.08, overwrite: true, clearProps: 'transform,transition' }),
     });
   }
 
   q('[data-stagger]').forEach((el) => {
-    gsap.from(el.children, { y: 36, autoAlpha: 0, duration: 1, ease: EASE.out, stagger: 0.07, scrollTrigger: onScroll(el, 'top 90%') });
+    // transitions are paused while the stagger runs, so a card's own hover transition cannot leave it offset
+    const kids = [...el.children];
+    gsap.fromTo(kids, { y: 36, autoAlpha: 0, transition: 'none' }, { y: 0, autoAlpha: 1, duration: 1, ease: EASE.out, stagger: 0.07, scrollTrigger: onScroll(el, 'top 90%'), clearProps: 'transform,transition' });
   });
 
   q('[data-img]').forEach((el) => {
@@ -115,30 +117,63 @@ export function revealIn(scope) {
 
 /**
  * Card rows that scroll sideways on phones and tablets (.stk, .fan, .sgrid, .aud, .posts)
- * glide to the next card on their own every few seconds and loop back at the end.
- * They pause while touched and only run while visible. Returns a cleanup function.
+ * drift continuously and seamlessly, like a ticker: the cards are repeated once (hidden from
+ * screen readers) and the row wraps when it reaches the copy. Touching or swiping pauses it,
+ * then it carries on from where the visitor left it. Runs only while the row is on screen.
  */
 export function autoRows(root = document) {
   const rows = [...root.querySelectorAll('.stk, .fan, .sgrid, .aud, .posts')];
   const stops = [];
   rows.forEach((row) => {
+    if (row.scrollWidth <= row.clientWidth + 4) return; // not a sideways row at this width
+    const originals = [...row.children];
+    const clones = originals.map((el) => {
+      const c = el.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.setAttribute('inert', '');
+      c.dataset.clone = '';
+      // copies start clean: never carry a half-finished reveal
+      [c, ...c.querySelectorAll('[style]')].forEach((n) => { n.style.removeProperty('transform'); n.style.removeProperty('opacity'); n.style.removeProperty('visibility'); n.style.removeProperty('transition'); n.style.removeProperty('translate'); });
+      row.appendChild(c);
+      return c;
+    });
+    const snap = row.style.scrollSnapType;
+    row.style.scrollSnapType = 'none';
+    const loop = () => clones[0].offsetLeft - originals[0].offsetLeft;
+    let pos = row.scrollLeft;
     let held = 0;
     let visible = false;
-    const hold = () => { held = Date.now(); };
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.4 });
+    let last = performance.now();
+    let raf = 0;
+    const hold = () => { held = performance.now(); };
+    const onScroll = () => { if (performance.now() - held < 2500) pos = row.scrollLeft; };
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.2 });
     io.observe(row);
     row.addEventListener('pointerdown', hold, { passive: true });
     row.addEventListener('touchstart', hold, { passive: true });
+    row.addEventListener('touchmove', hold, { passive: true });
     row.addEventListener('wheel', hold, { passive: true });
-    const tick = setInterval(() => {
-      if (!visible || Date.now() - held < 6000 || row.scrollWidth <= row.clientWidth + 4) return;
-      const card = row.firstElementChild;
-      if (!card) return;
-      const step = card.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 12);
-      const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 8;
-      row.scrollTo({ left: atEnd ? 0 : row.scrollLeft + step, behavior: 'smooth' });
-    }, 3200);
-    stops.push(() => { clearInterval(tick); io.disconnect(); row.removeEventListener('pointerdown', hold); row.removeEventListener('touchstart', hold); row.removeEventListener('wheel', hold); });
+    row.addEventListener('scroll', onScroll, { passive: true });
+    const frame = (now) => {
+      const dt = Math.min(64, now - last);
+      last = now;
+      if (visible && now - held > 2500) {
+        pos += dt * 0.045; // about 45px a second: calm, readable drift
+        const L = loop();
+        if (pos >= L) pos -= L;
+        if (pos < 0) pos += L;
+        row.scrollLeft = pos;
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+    stops.push(() => {
+      cancelAnimationFrame(raf); io.disconnect();
+      ['pointerdown', 'touchstart', 'touchmove', 'wheel'].forEach((t) => row.removeEventListener(t, hold));
+      row.removeEventListener('scroll', onScroll);
+      clones.forEach((c) => c.remove());
+      row.style.scrollSnapType = snap;
+    });
   });
   return () => stops.forEach((s) => s());
 }

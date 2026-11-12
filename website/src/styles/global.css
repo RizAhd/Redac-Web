@@ -563,7 +563,6 @@ a.info__row:hover { transform: translateY(-3px); }
   .slots { grid-template-columns: repeat(2, 1fr); }
   .footer__float { height: 170px; }
   .footer__float span { font-size: var(--fs-48); }
-  .footer__panel { margin-top: -8vw; }
   .statement__text { font-size: var(--fs-32); }
   .bw__row { font-size: clamp(3.5rem, 18vw, 6rem); }
 }
