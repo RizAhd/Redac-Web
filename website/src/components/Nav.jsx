@@ -17,15 +17,14 @@ const ABOUT = [
   { to: '/who-we-help', label: 'Who we help', text: 'Individuals, businesses, companies', icon: 'team' },
 ];
 
-export function Logo() {
-  return (
-    <span className="logo">
-      <span className="logo__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" /><path d="M11 23V9h6.2a4.3 4.3 0 0 1 0 8.6H11m6 0 4.8 5.4" /></svg>
-      </span>
-      <span className="logo__name">{C.short}<em> &amp; Associates</em></span>
-    </span>
-  );
+/* REDAC & Associates' own logo (from their current website).
+   nav: navy lettering, no tagline (white backgrounds, small sizes)
+   full: navy lettering with the tagline (white backgrounds)
+   white: the original white lettering (dark backgrounds) */
+const LOGOS = { nav: [290, 68], full: [290, 86], white: [290, 86] };
+export function Logo({ variant = 'nav' }) {
+  const [w, h] = LOGOS[variant];
+  return <img className={`logo logo--${variant}`} src={`${import.meta.env.BASE_URL}img/brand/logo-${variant}.png`} alt={C.name} width={w} height={h} decoding="async" />;
 }
 
 export default function Nav() {
