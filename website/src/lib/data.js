@@ -15,6 +15,7 @@ export const FAQ = site.faq;
 export const POSTS = site.posts;
 export const ABOUT = site.about;
 export const TEAM = site.team;
+export const MEMBERSHIPS = site.memberships || [];
 export const CREDITS = credits;
 
 // Photo URL for a key in site.json "images" (null when not set)

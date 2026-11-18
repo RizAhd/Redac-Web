@@ -367,3 +367,49 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   .sec--tight { padding: 44px 0; }
   .head-split { margin-bottom: 32px; }
 }
+
+/* ------------------------------------------------ REDAC's own logo, memberships, legal line */
+img.logo { display: block; width: auto; height: 40px; }
+img.logo--full { height: 64px; }
+img.logo--white { height: 64px; }
+.nav__logo { display: flex; align-items: center; padding: 2px 4px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s-2); }
+.badges li { display: grid; place-items: center; height: 46px; padding: 0 4px; border-radius: 10px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
+.badges img { height: 38px; width: auto; border-radius: 6px; }
+.badges--lg { margin-top: var(--s-5); }
+.badges--lg li { height: 64px; padding: 0 6px; }
+.badges--lg img { height: 52px; }
+.footer__note { flex-basis: 100%; order: 3; font-size: var(--fs-12); color: rgba(255,255,255,.65); }
+.facts dd { margin: 0; text-align: right; }
+
+/* two team members: wider cards side by side, photo beside the text */
+.team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.member { display: grid; grid-template-columns: minmax(150px, .8fr) 1.2fr; gap: 10px; align-items: stretch; }
+.member__ph { aspect-ratio: auto; min-height: 260px; }
+.member__body { align-content: start; padding: 18px 14px 14px 10px; }
+.member__body p:not(.member__role) { font-size: var(--fs-14); }
+
+@media (max-width: 960px) {
+  .team { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  img.logo { height: 34px; }
+  img.logo--full { height: 54px; }
+  .team { grid-template-columns: 1fr; }
+  .member { grid-template-columns: 1fr; }
+  .member__ph { min-height: 200px; }
+  .facts > div { flex-direction: column; gap: 2px; }
+  .facts dd { text-align: left; }
+  .badges--lg li { height: 54px; }
+  .badges--lg img { height: 44px; }
+}
+@media (max-width: 380px) {
+  img.logo { height: 30px; }
+}
+
+/* badges inside a text block keep their row layout */
+.prose ul.badges { display: flex; gap: 8px; }
+.prose ul.badges li { padding-left: 4px; }
+.prose ul.badges li::before { content: none; }
+.facts dt { white-space: nowrap; }
+.footer__contact dd a { display: inline-block; padding: 10px 0; margin: -10px 0; }

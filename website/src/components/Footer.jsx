@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES, C, CONTACT } from '../lib/data.js';
+import { SERVICES, C, CONTACT, MEMBERSHIPS, photo } from '../lib/data.js';
 import { gsap, useGSAP, reduced, SplitText } from '../lib/motion.js';
 import { Btn, Icon, Tbc } from './ui.jsx';
 import { Logo } from './Nav.jsx';
@@ -32,8 +32,9 @@ export default function Footer() {
             <Btn to="/contact" variant="glass" arrow={false}>Send an enquiry</Btn>
           </div>
           <dl className="footer__contact" data-f>
-            <div><dt><Icon name="phone" size={16} />Phone</dt><dd>{CONTACT.phone ? <a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a> : <Tbc label="Phone number" />}</dd></div>
+            <div><dt><Icon name="phone" size={16} />Phone</dt><dd>{CONTACT.phone ? <a href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}>{CONTACT.phone}</a> : <Tbc label="Phone number" />}</dd></div>
             <div><dt><Icon name="mail" size={16} />Email</dt><dd>{CONTACT.email ? <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> : <Tbc label="Email address" />}</dd></div>
+            <div><dt><Icon name="pin" size={16} />Office</dt><dd>{CONTACT.address || <Tbc label="Office address" />}</dd></div>
             <div><dt><Icon name="clock" size={16} />Hours</dt><dd>{CONTACT.hours || <Tbc label="Business hours" />}</dd></div>
           </dl>
         </div>
@@ -43,8 +44,13 @@ export default function Footer() {
 
       <div className="footer__panel">
         <div className="footer__brand">
-          <Link to="/" aria-label="Home"><Logo /></Link>
-          <p>{C.tagline}. Returns, statements, books, payroll, advice and company filings from one firm.</p>
+          <Link to="/" aria-label="Home"><Logo variant="full" /></Link>
+          <p>Returns, statements, books, payroll, advice and company filings from one firm.</p>
+          {MEMBERSHIPS.length > 0 && (
+            <ul className="badges" aria-label="Memberships">
+              {MEMBERSHIPS.map((m) => <li key={m.name}><img src={photo(m.image) || ''} alt={m.name} title={m.name} loading="lazy" /></li>)}
+            </ul>
+          )}
         </div>
         <div>
           <h4>Main pages</h4>
@@ -66,6 +72,7 @@ export default function Footer() {
 
       <div className="footer__legal">
         <span>&copy; {new Date().getFullYear()} {C.name}</span>
+        {C.legal_note && <span className="footer__note">{C.legal_note}</span>}
         <span>{C.tagline}</span>
       </div>
     </footer>

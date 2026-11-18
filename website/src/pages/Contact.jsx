@@ -21,7 +21,7 @@ export default function Contact() {
       <section className="sec">
         <div className="wrap contact">
           <div className="info" data-stagger>
-            <Row icon="phone" label="Call us" value={CONTACT.phone} href={CONTACT.phone && `tel:${CONTACT.phone}`} missing="Phone number" />
+            <Row icon="phone" label="Call us" value={CONTACT.phone} href={CONTACT.phone && `tel:${CONTACT.phone.replace(/\s/g, '')}`} missing="Phone number" />
             <Row icon="mail" label="Email" value={CONTACT.email} href={CONTACT.email && `mailto:${CONTACT.email}`} missing="Email address" />
             <Row icon="pin" label="Office" value={CONTACT.address} missing="Office address" />
             <Row icon="clock" label="Hours" value={CONTACT.hours} missing="Business hours" />

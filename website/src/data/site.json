@@ -3,18 +3,20 @@
   "company": {
     "name": "REDAC & Associates",
     "short": "REDAC",
-    "tagline": "Tax and accounting for people and businesses",
+    "tagline": "Certified Public Accountants, Tax Consultants and Business Advisors",
     "description": "Tax returns, GST and BAS, bookkeeping, payroll, advisory and company registration. Book your first consultation online.",
     "year_founded": null,
-    "registrations": null,
-    "domain": null
+    "registrations": "CPA Australia · Institute of Public Accountants (MIPA) · QuickBooks Certified User",
+    "domain": "redacassociates.com.au",
+    "legal_note": "Liability limited by a scheme approved under Professional Standards Legislation.",
+    "serves": "Individuals, sole traders, partnerships, trusts and companies"
   },
   "contact": {
-    "phone": null,
-    "email": null,
-    "address": null,
-    "hours": null,
-    "map_embed_url": null,
+    "phone": "+61 3 8372 4008",
+    "email": "info@redacassociates.com.au",
+    "address": "10 Castro Way, Derrimut VIC 3030",
+    "hours": "By appointment, including weekends and after hours",
+    "map_embed_url": "https://maps.google.com/maps?q=10%20Castro%20Way%2C%20Derrimut%20VIC%203030&z=15&output=embed",
     "social": {
       "facebook": null,
       "linkedin": null
@@ -52,11 +54,15 @@
     "step-approve": "handshake-desk.webp",
     "post-prepare-for-your-first-tax-consultation": "adviser-client-meeting.webp",
     "post-bookkeeping-habits-for-tax-time": "paperwork-laptop.webp",
-    "post-sole-trader-or-company": "signed-contract.webp"
+    "post-sole-trader-or-company": "signed-contract.webp",
+    "member-cpa": "brand/cpa-australia.jpg",
+    "member-ipa": "brand/institute-of-public-accountants.jpg",
+    "member-mipa": "brand/mipa-member.jpg",
+    "member-quickbooks": "brand/quickbooks-certified-user.jpg"
   },
   "about": {
     "intro": "REDAC & Associates is a tax and accounting firm for individuals, small businesses and companies. We prepare returns, statements and filings, keep books and payroll current, and help with company set-up and advice, all under one roof.",
-    "story": null,
+    "story": "As a Certified Public Accounting firm, REDAC & Associates provides a wide range of professional services for individuals, sole traders, partnerships, trusts and companies, including tax advice, preparation of books and records, assurance and project finance. We place a high value on accuracy in every part of our clients' financial reporting. Our team brings financial and legal expertise, and we can meet on weekends or after hours to suit you.",
     "values": [
       {
         "title": "One firm",
@@ -74,31 +80,17 @@
   },
   "team": [
     {
-      "name": null,
-      "role": null,
-      "qualifications": null,
-      "bio": null,
+      "name": "Kaleel",
+      "role": "Certified Public Accountant",
+      "qualifications": "CPA · over 20 years in taxation and financial reporting",
+      "bio": "Over 20 years of experience in taxation, tax planning, financial reporting, business valuation, forensic accounts, company auditing, consolidation and liquidation, corporate affairs and corporate finance. He has worked for international corporations as a financial accountant and tax adviser, and specialises in corporate governance and in financial analysis, planning and reporting.",
       "photo": null
     },
     {
-      "name": null,
-      "role": null,
-      "qualifications": null,
-      "bio": null,
-      "photo": null
-    },
-    {
-      "name": null,
-      "role": null,
-      "qualifications": null,
-      "bio": null,
-      "photo": null
-    },
-    {
-      "name": null,
-      "role": null,
-      "qualifications": null,
-      "bio": null,
+      "name": "Mr. Aloe",
+      "role": "Solicitor and Legal Practitioner",
+      "qualifications": "Over 25 years in practice in Victoria",
+      "bio": "Provides legal services across tax law, commercial law, family law and contract law, with over 25 years of practice in Victoria and a proven track record in commercial cases.",
       "photo": null
     }
   ],
@@ -450,6 +442,24 @@
         "## Talk it through first",
         "Every situation is different. A consultation before you register helps you choose with the full picture in front of you."
       ]
+    }
+  ],
+  "memberships": [
+    {
+      "name": "CPA Australia",
+      "image": "member-cpa"
+    },
+    {
+      "name": "Institute of Public Accountants",
+      "image": "member-ipa"
+    },
+    {
+      "name": "Member of the Institute of Public Accountants (MIPA)",
+      "image": "member-mipa"
+    },
+    {
+      "name": "QuickBooks Certified User",
+      "image": "member-quickbooks"
     }
   ]
 }

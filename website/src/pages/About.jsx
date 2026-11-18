@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ABOUT, C } from '../lib/data.js';
+import { ABOUT, C, CONTACT, MEMBERSHIPS, photo } from '../lib/data.js';
 import { PageHero, ServiceGrid, CtaBand, usePageReveal } from '../components/blocks.jsx';
 import { Btn, Eyebrow, Photo, Tbc } from '../components/ui.jsx';
 
@@ -20,9 +20,16 @@ export default function About() {
             <p>{ABOUT.intro}</p>
             <p>{ABOUT.story || <Tbc label="Firm history and story from REDAC" />}</p>
             <dl className="facts">
-              <div><dt>Established</dt><dd>{C.year_founded || <Tbc label="Year founded" />}</dd></div>
-              <div><dt>Registrations</dt><dd>{C.registrations || <Tbc label="Tax agent and professional registrations" />}</dd></div>
+              {C.year_founded && <div><dt>Established</dt><dd>{C.year_founded}</dd></div>}
+              {C.serves && <div><dt>We work with</dt><dd>{C.serves}</dd></div>}
+              <div><dt>Office</dt><dd>{CONTACT.address || <Tbc label="Office address" />}</dd></div>
+              <div><dt>Memberships</dt><dd>{C.registrations || <Tbc label="Tax agent and professional registrations" />}</dd></div>
             </dl>
+            {MEMBERSHIPS.length > 0 && (
+              <ul className="badges badges--lg" aria-label="Memberships">
+                {MEMBERSHIPS.map((m) => <li key={m.name}><img src={photo(m.image) || ''} alt={m.name} title={m.name} loading="lazy" /></li>)}
+              </ul>
+            )}
           </div>
           <div className="about-photos">
             <div className="about-photos__a" data-img><Photo k="who-companies" alt="" /></div>
