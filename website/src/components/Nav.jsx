@@ -131,7 +131,8 @@ export default function Nav() {
       </header>
       {menu && <div className="nav__veil" aria-hidden="true" onClick={() => setMenu(null)} />}
 
-      <div id="sheet" className={`sheet${open ? ' is-open' : ''}`} ref={sheet} aria-hidden={!open} inert={!open}>
+      {/* data-lenis-prevent: the smooth-scroll library must not block scrolling inside the menu */}
+      <div id="sheet" className={`sheet${open ? ' is-open' : ''}`} ref={sheet} aria-hidden={!open} inert={!open} data-lenis-prevent="">
         <div className="sheet__inner">
           <nav aria-label="Mobile">
             {[{ to: '/', label: 'Home' }, { to: '/services', label: 'Services' }, ...ABOUT, { to: '/insights', label: 'Insights' }, { to: '/faq', label: 'FAQ' }, { to: '/contact', label: 'Contact' }].map((l) => (
@@ -145,7 +146,7 @@ export default function Nav() {
             <ul>{SERVICES.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} onClick={close}>{s.title}</Link></li>)}</ul>
           </div>
           <div className="sheet__foot" data-sheet-item>
-            <Btn to="/book" variant="white" onClick={close}>Book a consultation</Btn>
+            <Btn to="/book" variant="blue" onClick={close}>Book a consultation</Btn>
             {CONTACT.email && <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>}
           </div>
         </div>
