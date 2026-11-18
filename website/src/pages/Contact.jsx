@@ -31,7 +31,7 @@ export default function Contact() {
             <div className="info__book">
               <b>Prefer to pick a time?</b>
               <p>Choose a day and time and we confirm by email.</p>
-              <Btn to="/book" variant="white">Book a consultation</Btn>
+              <Btn to="/book" variant="blue">Book a consultation</Btn>
             </div>
           </div>
           <div>

@@ -21,9 +21,9 @@ export function Center({ children, tick = false }) {
 export default function ThankYou() {
   return (
     <Center tick>
-      <h1 className="h1" data-split data-now>Thank you, <span className="accent accent--light">we got it</span></h1>
+      <h1 className="h1" data-split data-now>Thank you, <span className="accent">we got it</span></h1>
       <p className="lead" data-reveal>Your enquiry has been received. We will reply by email to confirm the next steps.</p>
-      <div className="btn-row btn-row--center" data-reveal><Btn to="/" variant="white">Back to home</Btn><Btn to="/services" variant="glass" arrow={false}>Explore services</Btn></div>
+      <div className="btn-row btn-row--center" data-reveal><Btn to="/" variant="blue">Back to home</Btn><Btn to="/services" variant="outline" arrow={false}>Explore services</Btn></div>
     </Center>
   );
 }

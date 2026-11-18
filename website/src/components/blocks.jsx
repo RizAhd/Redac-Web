@@ -246,11 +246,11 @@ export function CtaBand({ title = 'Ready to talk', accent = 'numbers?', text = '
       <div className="wrap">
         <div className="cta" data-reveal>
           <div className="cta__text">
-            <h2 className="h2" data-split>{title} <span className="accent accent--light">{accent}</span></h2>
+            <h2 className="h2" data-split>{title} <span className="accent">{accent}</span></h2>
             <p className="lead">{text}</p>
             <div className="btn-row">
-              <Btn to="/book" variant="white">Book a consultation</Btn>
-              <Btn to="/contact" variant="glass" arrow={false}>Ask a question</Btn>
+              <Btn to="/book" variant="blue">Book a consultation</Btn>
+              <Btn to="/contact" variant="outline" arrow={false}>Ask a question</Btn>
             </div>
             <ul className="cta__ticks">
               <li><Icon name="calendar" size={18} />Pick a time online</li>

@@ -24,12 +24,12 @@ export default function Footer() {
     <footer className="footer" ref={ref}>
       <div className="wrap footer__head">
         <div>
-          <h2 className="h2">Let&rsquo;s sort out your <span className="accent accent--light">tax and accounts</span></h2>
+          <h2 className="h2">Let&rsquo;s sort out your <span className="accent">tax and accounts</span></h2>
         </div>
         <div className="footer__actions">
           <div className="btn-row" data-f>
             <Btn to="/book">Book a consultation</Btn>
-            <Btn to="/contact" variant="glass" arrow={false}>Send an enquiry</Btn>
+            <Btn to="/contact" variant="outline" arrow={false}>Send an enquiry</Btn>
           </div>
           <dl className="footer__contact" data-f>
             <div><dt><Icon name="phone" size={16} />Phone</dt><dd>{CONTACT.phone ? <a href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}>{CONTACT.phone}</a> : <Tbc label="Phone number" />}</dd></div>

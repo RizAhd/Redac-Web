@@ -45,8 +45,8 @@ export default function Service() {
             <div className="side-card__body">
               <h3>Who it is for</h3>
               <ul>{s.for.map((x) => <li key={x}>{x}</li>)}</ul>
-              <Btn to="/book" variant="white">Book a consultation</Btn>
-              <Link className="link link--light" to="/contact">Or send an enquiry <Icon name="arrow" size={14} /></Link>
+              <Btn to="/book" variant="blue">Book a consultation</Btn>
+              <Link className="link link--blue" to="/contact">Or send an enquiry <Icon name="arrow" size={14} /></Link>
             </div>
           </aside>
         </div>

@@ -135,7 +135,7 @@ export default function Home() {
             </article>
             <article className="tile tile--photo" data-pop>
               <div className="tile__img"><Photo k="svc-business-advisory-and-project-finance" alt="The REDAC team in a meeting" /></div>
-              <div className="tile__over"><b>One team for your tax and accounts</b><Link to="/team" className="link link--light">Meet the team <Icon name="arrow" size={14} /></Link></div>
+              <div className="tile__over"><b>One team for your tax and accounts</b><Link to="/team" className="link link--blue">Meet the team <Icon name="arrow" size={14} /></Link></div>
             </article>
             <article className="tile tile--green" data-pop>
               <div className="tile__num"><b data-count="03">03</b><span>client groups</span></div>
@@ -156,7 +156,7 @@ export default function Home() {
             <article className="tile tile--deep" data-pop>
               <div className="tile__num"><b data-count="01">01</b><span>point of contact</span></div>
               <p>Book online, share your documents, and talk to the same people every time.</p>
-              <Btn to="/book" variant="white">Book a consultation</Btn>
+              <Btn to="/book" variant="blue">Book a consultation</Btn>
             </article>
           </div>
         </div>

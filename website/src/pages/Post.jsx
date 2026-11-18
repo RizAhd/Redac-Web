@@ -25,7 +25,7 @@ export default function Post() {
           <aside className="side-card" data-reveal>
             <h3>Need a hand?</h3>
             <p>Talk to us about your situation.</p>
-            <Btn to="/book" variant="white">Book a consultation</Btn>
+            <Btn to="/book" variant="blue">Book a consultation</Btn>
           </aside>
         </div>
       </section>

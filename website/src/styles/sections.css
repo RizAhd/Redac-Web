@@ -413,3 +413,89 @@ img.logo--white { height: 64px; }
 .prose ul.badges li::before { content: none; }
 .facts dt { white-space: nowrap; }
 .footer__contact dd a { display: inline-block; padding: 10px 0; margin: -10px 0; }
+
+/* =====================================================================
+   Calmer palette (client feedback: "too blue").
+   Large surfaces are white or light grey; royal blue is kept for buttons,
+   links, highlights and one feature tile. Green stays as the second accent.
+   ===================================================================== */
+.btn--outline { --bg: #fff; --fg: var(--ink); --ar-bg: var(--ink); --ar-fg: #fff; box-shadow: inset 0 0 0 1.5px rgba(16, 24, 61, .18); }
+.btn--outline:hover { --bg: var(--frame); }
+.link--blue { color: var(--blue); }
+
+/* hero: a lighter scrim on the photo instead of a blue wash */
+.hero__shade { background: linear-gradient(90deg, rgba(12, 20, 52, .74) 0%, rgba(12, 20, 52, .42) 40%, rgba(12, 20, 52, 0) 72%), linear-gradient(0deg, rgba(12, 20, 52, .5), transparent 38%); }
+
+/* mobile menu: white sheet that scrolls on its own */
+.sheet { background: #fff; color: var(--ink); overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.sheet__row { border-bottom-color: var(--line); }
+.sheet__row a:not(.btn) .icon { color: var(--blue); }
+.sheet__row a.is-here { color: var(--blue); }
+.sheet__svc p { color: var(--ink-2); }
+.sheet__svc a { background: var(--frame); color: var(--ink); }
+.sheet__foot a:not(.btn) { color: var(--blue); font-weight: 700; }
+
+/* call-to-action band */
+.cta { background: var(--frame); color: var(--ink); }
+.cta__text .lead { color: var(--ink-2); }
+.cta__ticks li { color: var(--ink-2); }
+.cta__ticks .icon { color: var(--green-ink); }
+
+/* footer: light, with the blue kept for links and the heading accent */
+.footer { background: var(--frame); color: var(--ink); }
+.footer::before { background: radial-gradient(45% 60% at 50% 100%, rgba(29, 63, 217, .1), transparent 70%), radial-gradient(25% 40% at 85% 90%, rgba(93, 195, 155, .22), transparent 70%); }
+.footer__contact { border-top-color: var(--line); }
+.footer__contact > div { border-bottom-color: var(--line); }
+.footer__contact dt { color: var(--ink-2); }
+.footer__contact dt .icon { color: var(--green-ink); }
+.footer__contact dd a { color: var(--blue); }
+.footer .ticker--light { border-color: var(--line); }
+.footer .ticker--light span { color: var(--ink); }
+.footer .ticker--light span:nth-child(even) { color: var(--blue); }
+.footer__panel { box-shadow: 0 20px 50px -30px rgba(18, 37, 127, .25); }
+.footer__word { color: rgba(29, 63, 217, .07); }
+.footer__legal, .footer__note { color: var(--ink-2); }
+
+/* bento: one blue tile only */
+.tile--deep { background: var(--green-l); color: var(--ink); }
+.tile--deep .tile__num b { color: var(--green-ink); }
+.tile__over { background: rgba(255, 255, 255, .94); color: var(--ink); }
+.tile__over .link--blue, .tile__over .link { color: var(--blue); }
+
+/* forms and booking: white cards instead of blue blocks */
+.form { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line), 0 24px 60px -36px rgba(18, 37, 127, .3); }
+.field input, .field select, .field textarea { border-color: rgba(16, 24, 61, .14); background: var(--frame); color: var(--ink); }
+.field ::placeholder { color: rgba(91, 99, 131, .8); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); background: #fff; }
+.field [aria-invalid="true"] { border-color: #d14343; }
+.err { color: #b42318; }
+.form__note { color: var(--ink-2); }
+.info__book { background: var(--green-l); color: var(--ink); }
+.info__book p { color: var(--ink-2); }
+.picked { background: var(--green-l); color: var(--ink); }
+
+/* service and article side card */
+.side-card { background: var(--frame); color: var(--ink); }
+.side-card ul:not(.chips) li { color: var(--ink-2); }
+.side-card p { color: var(--ink-2); }
+.side-card .link { color: var(--blue); }
+.chips--light li { background: #fff; color: var(--ink); }
+
+/* small blocks */
+.feat__more { background: var(--green-l); color: var(--ink); }
+.feat__more:hover { background: #cdeedd; }
+.feat__more span { color: var(--ink-2); }
+.feat__more .icon { color: var(--green-ink); }
+
+/* thank-you and 404 pages */
+.done { background: var(--frame); color: var(--ink); }
+.done .lead { color: var(--ink-2); }
+
+/* phones: the hero sits on white, the photo framed below */
+@media (max-width: 960px) {
+  .hero__frame { background: var(--frame); color: var(--ink); }
+  .hero__lead { color: var(--ink-2); }
+  .hero .btn--glass { --bg: #fff; --fg: var(--ink); box-shadow: inset 0 0 0 1.5px rgba(16, 24, 61, .18); backdrop-filter: none; }
+}
+/* menu links: the last link keeps the same spacing and divider as the others */
+.sheet nav .sheet__row:last-child { padding-top: 0; border-bottom: 1px solid var(--line); }
